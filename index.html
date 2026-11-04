@@ -739,12 +739,14 @@ html.go .dl i{animation:ping3 2.2s ease-out infinite}
   .nt1{left:-48%;width:156px}
 }
 
-/* ---------- hareket azaltma / duraklatma ---------- */
-@media(prefers-reduced-motion:reduce){
-  .js [data-reveal],.js [data-split] .w>span,.js .ln>span,.js .depth{transition:none;animation:none}
-  .ready .top,.ready .ln.em>span:after,.nstack .notif,.lv-t b{transition:none}
-  .ready .top nav a{transition:color .4s}
-}
+/* ---------- duraklatma (ziyaretçi durdurduysa) ---------- */
+html.still [data-reveal],html.still [data-split] .w>span,html.still .ln>span,html.still .depth{transition:none;animation:none}
+html.still .top,html.still .ln.em>span:after,html.still .nstack .notif,html.still .lv-t b{transition:none}
+html.still .top nav a{transition:color .4s}
+/* ---------- sakin mod (sistem "hareketi azalt" diyorsa): giriş hareketleri daha yumuşak ---------- */
+html.calm .depth{--rr:0deg}
+.mhint button{margin-top:9px;padding:8px 13px;border:0;border-radius:99px;background:#0866ff;color:#fff;font:700 11px/1 var(--ui);cursor:pointer}
+.mhint button:hover{background:#2f83ff}
 </style>
 </head>
 <body data-theme="paper">
@@ -1126,7 +1128,7 @@ html.go .dl i{animation:ping3 2.2s ease-out infinite}
 
 </main>
 
-<p class="mhint" id="mhint" hidden>Animasyonlar kapalı (sistem "hareketi azalt" ayarı). Sağdaki ▶ düğmesiyle açabilirsin.</p>
+<p class="mhint" id="mhint" hidden>Sisteminde “hareketi azalt” açık, bu yüzden sayfa sakin hareketle açıldı.<br><button type="button" id="mfull">Tam hareket</button></p>
 <nav class="dock" aria-label="Sunum gezinmesi">
   <button id="prev" type="button" aria-label="Önceki bölüm">←</button>
   <output id="page" aria-live="polite">01 / 05</output>
@@ -1147,10 +1149,13 @@ const ease=t=>t*t*t*(t*(t*6-15)+10);          /* smootherstep: daha yumuşak gir
 const seg=(p,a,b)=>clamp((p-a)/(b-a));
 const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
-const store={get(){try{return localStorage.getItem('portfolyo-hareket')}catch(e){return null}},set(v){try{localStorage.setItem('portfolyo-hareket',v)}catch(e){}}};
-/* Önce ziyaretçinin kendi seçimi, yoksa sistemin "hareketi azalt" ayarı */
-let still=store.get()==='on'?false:store.get()==='off'?true:reduce.matches,lite=false,vh=innerHeight,vw=innerWidth,docH=1;
-const syncMode=()=>{root.classList.toggle('go',!still&&!lite);root.classList.toggle('still',still);root.classList.toggle('lite',lite)};
+const store={get(){try{return localStorage.getItem('portfolyo-hareket')}catch(e){return null}},set(v){try{if(v==null)localStorage.removeItem('portfolyo-hareket');else localStorage.setItem('portfolyo-hareket',v)}catch(e){}}};
+/* Hareket HERKESE otomatik açılır. Ziyaretçi durdurduysa ('off') sakin kalır.
+   Sistemi "hareketi azalt" diyorsa sayfa yine canlı açılır ama büyük hareketler
+   (eğim, paralaks, dağılma, atalet kaydırma) kapalıdır: calm. "Tam hareket" ('on') ile açılabilir. */
+const saved=store.get();
+let still=saved==='off',calm=reduce.matches&&saved!=='on',lite=false,vh=innerHeight,vw=innerWidth,docH=1;
+const syncMode=()=>{root.classList.toggle('go',!still&&!lite);root.classList.toggle('still',still);root.classList.toggle('lite',lite);root.classList.toggle('calm',calm&&!still)};
 
 /* ---------- metni kelime kelime böl ---------- */
 function splitNode(node,idx){
@@ -1187,7 +1192,7 @@ $$('[data-reveal],[data-split]').forEach(el=>revealIO.observe(el));
 /* ---------- yumuşak kaydırma (atalet) ---------- */
 const sm={target:0,cur:0,rate:6.5,last:0,active:false,max:0};
 const coarse=matchMedia('(pointer:coarse)').matches;
-const canSmooth=()=>fine&&!coarse&&!still&&!lite;
+const canSmooth=()=>fine&&!coarse&&!still&&!lite&&!calm;
 addEventListener('wheel',e=>{
   if(e.ctrlKey||e.defaultPrevented||!canSmooth())return;
   let d=e.deltaY;if(e.deltaMode===1)d*=32;else if(e.deltaMode===2)d*=vh;
@@ -1207,7 +1212,7 @@ function smoothStep(dt){
 function scrollToY(y){
   y=clamp(y,0,sm.max);
   if(canSmooth()){sm.cur=scrollY;sm.target=y;sm.rate=3.2;sm.active=true}
-  else scrollTo({top:y,behavior:still?'auto':'smooth'});
+  else scrollTo({top:y,behavior:(still||calm)?'auto':'smooth'});
 }
 
 /* ---------- bölüm takibi (tema, sayaç, menü) ---------- */
@@ -1235,8 +1240,14 @@ function setStill(v){
   resetTransforms();
   vplay(heroVid,coverIn&&!still);
 }
-mBtn.addEventListener('click',()=>{setStill(!still);store.set(still?'off':'on');mHint.hidden=true});
-mHint.hidden=!(reduce.matches&&still);
+mBtn.addEventListener('click',()=>{setStill(!still);store.set(still?'off':(calm?null:'on'));mHint.hidden=true});
+/* sistemi "hareketi azalt" diyen ziyaretçiye (oturum başına bir kez) kısa bilgi + "Tam hareket" */
+const mFull=$('#mfull');
+mFull.addEventListener('click',()=>{calm=false;store.set('on');syncMode();mHint.hidden=true});
+(()=>{
+  let shown=false;try{shown=sessionStorage.getItem('portfolyo-ipucu')==='1';sessionStorage.setItem('portfolyo-ipucu','1')}catch(e){}
+  if(calm&&!still&&!shown){mHint.hidden=false;setTimeout(()=>{mHint.hidden=true},12000)}
+})();
 function resetTransforms(){
   depths.forEach(d=>{d.style.transform='';d.style.translate='';d.style.rotate=''});
   par.forEach(p=>p.el.style.transform='');
@@ -1361,7 +1372,7 @@ if(fine){
   addEventListener('pointermove',e=>{gtx=e.clientX;gty=e.clientY;glow.classList.add('on')},{passive:true});
   document.documentElement.addEventListener('mouseleave',()=>glow.classList.remove('on'));
   $$('.magnetic').forEach(b=>{
-    b.addEventListener('pointermove',e=>{if(still||lite)return;const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.3}px)`});
+    b.addEventListener('pointermove',e=>{if(still||lite||calm)return;const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.22}px,${(e.clientY-r.top-r.height/2)*.3}px)`});
     b.addEventListener('pointerleave',()=>b.style.transform='');
   });
 }
@@ -1370,7 +1381,7 @@ function frame(now){
   smoothStep(dt);
   target=scrollY;
   /* kaydırma zaten yumuşatıldığında ikinci bir gecikme eklenmez */
-  cur=(still||sm.active||canSmooth()||Math.abs(target-cur)<.08)?target:cur+(target-cur)*(1-Math.exp(-dt*14));
+  cur=(still||calm||sm.active||canSmooth()||Math.abs(target-cur)<.08)?target:cur+(target-cur)*(1-Math.exp(-dt*14));
   vel=(cur-prev)/Math.max(dt,.001)/60;prev=cur;
 
   bar.style.transform='scaleX('+clamp(target/Math.max(1,docH-vh)).toFixed(4)+')';
@@ -1382,27 +1393,29 @@ function frame(now){
   });
 
   if(!still&&!lite){
-    par.forEach(p=>{const d=p.c-(cur+vh/2);if(Math.abs(d)<vh*1.6)p.el.style.transform='translate3d(0,'+(d*p.speed).toFixed(1)+'px,0)'});
-    /* kapak: kaydırdıkça yazı süzülüp kaybolur, kartlar farklı yönlere dağılır */
-    const cp=Math.round(clamp(cur/vh)*400)/400;
-    if(cp!==cpPrev){
-      cpPrev=cp;
-      copyEl.style.translate='0 '+(-cp*80).toFixed(1)+'px';copyEl.style.opacity=Math.max(0,1-cp*1.2).toFixed(3);
-      stageEl.style.scale=(1-cp*.1).toFixed(3);
-      depths.forEach((d,i)=>{const o=EXIT[i];d.style.translate=(o[0]*cp).toFixed(1)+'px '+(o[1]*cp).toFixed(1)+'px';d.style.rotate=(o[2]*cp).toFixed(2)+'deg'});
-    }
-    if(fine&&coverIn){
-      mx+=(tx-mx)*.07;my+=(ty-my)*.07;
-      depths.forEach(d=>{const k=+d.dataset.d;d.style.transform='translate3d('+(mx*k).toFixed(1)+'px,'+(my*k).toFixed(1)+'px,0)'});
-      stageEl.style.transform=(Math.abs(mx)+Math.abs(my)<.003)?'':'perspective(1100px) rotateY('+(mx*10).toFixed(2)+'deg) rotateX('+(-my*8).toFixed(2)+'deg)';
+    if(!calm){
+      par.forEach(p=>{const d=p.c-(cur+vh/2);if(Math.abs(d)<vh*1.6)p.el.style.transform='translate3d(0,'+(d*p.speed).toFixed(1)+'px,0)'});
+      /* kapak: kaydırdıkça yazı süzülüp kaybolur, kartlar farklı yönlere dağılır */
+      const cp=Math.round(clamp(cur/vh)*400)/400;
+      if(cp!==cpPrev){
+        cpPrev=cp;
+        copyEl.style.translate='0 '+(-cp*80).toFixed(1)+'px';copyEl.style.opacity=Math.max(0,1-cp*1.2).toFixed(3);
+        stageEl.style.scale=(1-cp*.1).toFixed(3);
+        depths.forEach((d,i)=>{const o=EXIT[i];d.style.translate=(o[0]*cp).toFixed(1)+'px '+(o[1]*cp).toFixed(1)+'px';d.style.rotate=(o[2]*cp).toFixed(2)+'deg'});
+      }
+      if(fine&&coverIn){
+        mx+=(tx-mx)*.07;my+=(ty-my)*.07;
+        depths.forEach(d=>{const k=+d.dataset.d;d.style.transform='translate3d('+(mx*k).toFixed(1)+'px,'+(my*k).toFixed(1)+'px,0)'});
+        stageEl.style.transform=(Math.abs(mx)+Math.abs(my)<.003)?'':'perspective(1100px) rotateY('+(mx*10).toFixed(2)+'deg) rotateX('+(-my*8).toFixed(2)+'deg)';
+      }
     }
     if(fine){gx+=(gtx-gx)*.12;gy+=(gty-gy)*.12;glow.style.transform='translate3d('+gx.toFixed(1)+'px,'+gy.toFixed(1)+'px,0)'}
     mqs.forEach(m=>{
       if(Math.abs(m.abs-(cur+vh/2))>vh*1.2)return;
-      m.x+=m.dir*(.55+Math.abs(vel)*.9)*(dt*60);
+      m.x+=m.dir*(.55+(calm?0:Math.abs(vel)*.9))*(dt*60);
       if(m.x<=-m.w)m.x+=m.w;if(m.x>0)m.x-=m.w;
-      /* kaydırma hızına göre hafifçe eğilir */
-      m.sk+=(clamp(-vel*.1,-6,6)-m.sk)*.14;
+      /* kaydırma hızına göre hafifçe eğilir (calm modunda eğilme yok) */
+      m.sk+=((calm?0:clamp(-vel*.1,-6,6))-m.sk)*.14;
       m.t.style.transform='translate3d('+m.x.toFixed(1)+'px,0,0) skewX('+m.sk.toFixed(2)+'deg)';
     });
   }
