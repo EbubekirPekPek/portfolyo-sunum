@@ -302,7 +302,7 @@ html.go .device{animation:bob3 8s ease-in-out infinite}
 .scr{position:absolute;inset:0}
 .s1{opacity:var(--w1,1)}
 .sv{opacity:min(1,calc(var(--w2,0) + var(--w3,0) + var(--w4,0)));background:#0b0f14}
-.s5{opacity:var(--w5,0)}
+.s5{opacity:min(1,calc(var(--w5,0) + var(--w6,0)))}
 .feed{position:absolute;left:0;right:0;top:44px}
 .post-h{display:flex;align-items:center;gap:9px;padding:9px 12px}
 .av{display:block;width:28px;height:28px;border:1px solid #e3e7ec;border-radius:50%;background:#fff;object-fit:contain;padding:3px}
@@ -348,9 +348,39 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
 .upl-bar{display:block;height:3px;margin-top:6px;border-radius:3px;background:#dfe4eb;overflow:hidden}
 .upl-bar i{display:block;height:100%;background:var(--ig);transform:scaleX(clamp(0,calc(var(--l5,0)*3.2),1));transform-origin:left}
 .upl.gone{display:none}
-.newp{position:relative;overflow:hidden;max-height:calc(var(--b52,0)*480px);opacity:var(--b52,0)}
-.newp:after{content:"";position:absolute;inset:0;border:2px solid var(--ig);border-radius:2px;opacity:calc(var(--b52,0)*(1 - var(--b53,0)*.35));box-shadow:0 0 0 6px color-mix(in srgb,var(--ig) 18%,transparent);pointer-events:none}
-.nt5{left:8px;right:8px;top:10px;opacity:var(--b53,0);translate:0 calc((1 - var(--b53,0))*-70px)}
+.newp{position:relative;overflow:hidden;max-height:calc(var(--b52,0)*760px);opacity:var(--b52,0)}
+.newp:after{content:"";position:absolute;inset:0;border:2px solid var(--ig);border-radius:2px;opacity:calc(var(--b52,0)*(1 - var(--b53,0)*.35)*(1 - var(--b61,0)));box-shadow:0 0 0 6px color-mix(in srgb,var(--ig) 18%,transparent);pointer-events:none}
+.nt5{left:8px;right:8px;top:10px;opacity:calc(var(--b53,0)*var(--w5,0));translate:0 calc((1 - var(--b53,0))*-70px)}
+/* S6: ilgi ve etkileşim (paylaşımdan sonra kalpler, yorum, mesaj) */
+.nt7{left:8px;right:8px;top:10px;opacity:var(--b63,0);translate:0 calc((1 - var(--b63,0))*-70px)}
+.pimg{position:relative}
+.dbl{position:absolute;left:50%;top:50%;width:30%;height:auto;aspect-ratio:1;translate:-50% -50%;color:#fff;filter:drop-shadow(0 6px 16px rgb(0 0 0/.35));opacity:calc(clamp(0,calc(var(--b61,0)*4),1)*clamp(0,calc(1 - var(--b62,0)*3),1));scale:calc(.4 + .8*var(--b61,0))}
+.hrt{position:relative;flex:none;width:21px;height:21px}
+.hrt svg{position:absolute;left:0;top:0}
+.hrt .h0{opacity:calc(1 - var(--b61,0))}
+.hrt .h1{color:#ff3040;opacity:var(--b61,0);scale:calc(.5 + .5*var(--b61,0))}
+.lk{display:flex;align-items:center;gap:8px;padding:0 12px;overflow:hidden;font-size:11px;font-weight:700;max-height:calc(var(--b61,0)*26px);opacity:var(--b61,0)}
+.avs{display:flex}
+.avs i{display:block;width:16px;height:16px;margin-right:-5px;border:2px solid #fff;border-radius:50%;background:#f3b46f}
+.avs i:nth-child(2){background:#74a6f7}
+.avs i:nth-child(3){background:#ee8b8b}
+.cm{padding:0 12px;overflow:hidden;font-size:11px;line-height:1.4;color:#1c232d;max-height:calc(var(--b62,0)*46px);opacity:var(--b62,0);translate:0 calc((1 - var(--b62,0))*8px)}
+.cm b{margin-right:4px}
+.hbs{position:absolute;z-index:6;right:16px;bottom:16px;width:0;height:0;pointer-events:none}
+.hb{position:absolute;right:0;bottom:0;width:20px;height:20px;color:#ff3040;opacity:0}
+.hb svg{display:block;width:100%;height:100%}
+@keyframes hb{0%{opacity:0;transform:translate(0,0) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translate(var(--sx,0px),-250px) scale(1.15)}}
+html.go .story.eng .hb{animation:hb 2.8s ease-out var(--hd,0s) infinite}
+.engc{left:-66%;top:24%;width:56%;padding:12px;opacity:calc(var(--b61,0)*var(--w6,0));translate:calc((1 - var(--b61,0))*-34px) 0}
+.er{display:flex;align-items:center;gap:9px;padding:7px 0;border-top:1px solid var(--line)}
+.er:first-of-type{border-top:0}
+.er i{display:grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;background:color-mix(in srgb,var(--accent) 14%,var(--card));color:var(--accent)}
+.er i.h{background:rgb(255 48 64/.12);color:#ff3040}
+.er i svg{width:13px;height:13px}
+.er:nth-of-type(1){opacity:var(--b61,0)}
+.er:nth-of-type(2){opacity:var(--b62,0)}
+.er:nth-of-type(3){opacity:var(--b63,0)}
+.nt8{right:-86%;top:26%;width:218px;opacity:calc(var(--b62,0)*var(--w6,0));translate:calc((1 - var(--b62,0))*34px) 0}
 
 /* telefonun etrafındaki yüzen kartlar */
 .fx{position:absolute;z-index:3;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:600 12px/1.3 var(--ui);box-shadow:0 20px 40px -18px rgb(8 20 45/.45)}
@@ -580,6 +610,8 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
   .strip{height:30px}
   .file{display:flex;right:-56%;top:50%;width:66%;padding:9px}
   .share{display:block;left:-52%;top:58%;width:86%;padding:10px}
+  .engc{display:block;left:-44%;top:58%;width:72%;padding:10px}
+  .er{padding:5px 0}
   .canvas{width:100%;aspect-ratio:1.08/1}
   .radar{width:60%;top:46%}
   .crumbs li{padding:6px 8px;font-size:10px}
@@ -644,16 +676,16 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
   <i class="blob dr bg dr2" style="width:46vw;max-width:620px;aspect-ratio:1;left:-12vw;bottom:-18vh" aria-hidden="true"></i>
   <div class="wrap cover-grid">
     <div class="cover-copy">
-      <p class="eyebrow" data-reveal>Sosyal medya &amp; reklam</p>
-      <h1 aria-label="Sosyal medya ve Meta reklam yönetimi.">
-        <span class="ln" aria-hidden="true"><span style="--i:0">Sosyal medya</span></span>
-        <span class="ln" aria-hidden="true"><span style="--i:1">ve Meta</span></span>
-        <span class="ln em" aria-hidden="true"><span style="--i:2">reklam yönetimi.</span></span>
+      <p class="eyebrow" data-reveal>Bir markanın sosyal medya akışı</p>
+      <h1 aria-label="Bir fikir, bir paylaşım, sonra gelen ilgi.">
+        <span class="ln" aria-hidden="true"><span style="--i:0">Bir fikir,</span></span>
+        <span class="ln" aria-hidden="true"><span style="--i:1">bir paylaşım,</span></span>
+        <span class="ln em" aria-hidden="true"><span style="--i:2">sonra gelen ilgi.</span></span>
       </h1>
-      <p class="lead" data-reveal style="--d:.55s">Instagram ve Facebook hesap yönetimi, görsel ve video üretimi, Meta reklamlarının planlanması ve yönetimi.</p>
+      <p class="lead" data-reveal style="--d:.55s">Instagram ve Facebook hesapları, görseller, videolar ve Meta reklamları. Bir paylaşımın yolculuğu, aşağıda adım adım.</p>
       <div class="tags" data-reveal style="--d:.7s"><div class="live" aria-hidden="true"><i></i><div class="lv-t"><b class="on">Hesaplar takip ediliyor</b><b>İçerikler üretiliyor</b><b>Videolar editleniyor</b><b>Reklamlar yönetiliyor</b></div></div><span>Hesap yönetimi</span><span>İçerik üretimi</span><span>Meta reklamları</span></div>
       <div class="cta" data-reveal style="--d:.85s">
-        <a class="btn magnetic" href="#sosyal-medya">Nasıl çalışıyorum <i>→</i></a>
+        <a class="btn magnetic" href="#sosyal-medya">Akışı izle <i>→</i></a>
         <a class="btn ghost magnetic" href="#calismalar">Çalışmalara göz at</a>
       </div>
     </div>
@@ -688,13 +720,13 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
 <!-- ================= 2) SOSYAL MEDYA ================= -->
 <section class="sec" id="sosyal-medya" data-theme="ice" aria-label="Sosyal medya yönetimi">
   <div class="mq" aria-hidden="true" data-mq>
-    <div class="mq-track"><div class="mq-set"><span>Hesap yönetimi</span><b>✦</b><span class="o">İçerik üretimi</span><b>✦</b><span>Görsel &amp; video</span><b>✦</b><span class="o">Meta reklamları</span><b>✦</b></div></div>
+    <div class="mq-track"><div class="mq-set"><span>Fikir</span><b>✦</b><span class="o">Üretim</span><b>✦</b><span>Paylaşım</span><b>✦</b><span class="o">İlgi</span><b>✦</b></div></div>
   </div>
   <i class="blob" data-speed=".1" style="width:46vw;max-width:640px;aspect-ratio:1;left:-12vw;top:34vh" aria-hidden="true"></i>
   <div class="wrap intro-block">
     <p class="eyebrow" data-reveal>01 / Sosyal medya yönetimi</p>
-    <h2 class="h2" data-split>Hesap takibinden <em>paylaşıma.</em></h2>
-    <p class="lead" data-reveal style="--d:.3s">Instagram ve Facebook hesaplarının günlük takibini yapıyor, sosyal medya için içerikler hazırlıyor ve paylaşıyorum.</p>
+    <h2 class="h2" data-split>Bir paylaşımın <em>yolculuğu.</em></h2>
+    <p class="lead" data-reveal style="--d:.3s">Bir fikrin videoya, videonun paylaşıma, paylaşımın da ilgiye dönüştüğü yol.</p>
   </div>
 
   <div class="reel" aria-hidden="true" data-mq data-dir="r" data-reveal>
@@ -710,7 +742,7 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
     </div></div>
   </div>
 
-  <div class="story" data-story="social" data-n="5" data-map="0,1,1,1,2" style="--n:5">
+  <div class="story" data-story="social" data-n="6" data-map="0,1,1,1,2,3" style="--n:6">
     <div class="pin">
       <div class="wrap story-grid">
         <div class="steps"><span class="rail" aria-hidden="true"><i></i></span><ol>
@@ -718,6 +750,7 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
           <li class="step"><span class="num">02</span><div><h3>Görsel ve video üretimi</h3><p>Görsellerin hazırlanması, video üretimi ve düzenlenmesi.</p>
             <ul class="sub" aria-label="Video aşamaları"><li data-st="1">Üretildi</li><li data-st="2">Editlendi</li><li data-st="3">Render alındı</li></ul></div></li>
           <li class="step"><span class="num">03</span><div><h3>İçerik paylaşımı</h3><p>Hazırlanan içeriklerin sosyal medya hesaplarında paylaşılması.</p></div></li>
+          <li class="step"><span class="num">04</span><div><h3>İlgi ve etkileşim</h3><p>Paylaşımın ardından gelen beğeni, yorum ve mesajlar.</p></div></li>
         </ol></div>
 
         <div class="device" aria-hidden="true">
@@ -754,12 +787,16 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
             <!-- sahne 5: paylaşım sonrası akış -->
             <div class="scr s5">
               <div class="notif nt5"><span class="n-ic ig"><img src="assets/instagram-transparent.svg" alt=""></span><div class="n-tx"><div class="n-h"><b>Instagram</b><i>şimdi</i></div><span>Gönderin paylaşıldı</span></div></div>
+              <div class="notif nt7"><span class="n-ic ig"><img src="assets/instagram-transparent.svg" alt=""></span><div class="n-tx"><div class="n-h"><b>Instagram</b><i>şimdi</i></div><span>Yeni mesaj: “Fiyat bilgisi alabilir miyim?”</span></div></div>
+              <div class="hbs"><i class="hb" style="--sx:-16px;--hd:0s"><svg><use href="#i-heart-f"/></svg></i><i class="hb" style="--sx:10px;--hd:.45s"><svg><use href="#i-heart-f"/></svg></i><i class="hb" style="--sx:-30px;--hd:.9s"><svg><use href="#i-heart-f"/></svg></i><i class="hb" style="--sx:22px;--hd:1.35s"><svg><use href="#i-heart-f"/></svg></i><i class="hb" style="--sx:-6px;--hd:1.8s"><svg><use href="#i-heart-f"/></svg></i></div>
               <div class="feed">
                 <div class="upl"><img src="assets/kek-post.webp" alt=""><div style="flex:1"><b>Paylaşılıyor…</b><span class="upl-bar"><i></i></span></div></div>
                 <div class="newp">
                   <div class="post-h"><img class="av" src="assets/vita-logo.webp" alt=""><div><b>Vita</b><small>Az önce</small></div></div>
-                  <img class="post-img" src="assets/kek-post.webp" alt="">
-                  <div class="post-a"><svg><use href="#i-heart"/></svg><svg><use href="#i-comment"/></svg><svg><use href="#i-send"/></svg></div>
+                  <div class="pimg"><img class="post-img" src="assets/kek-post.webp" alt=""><svg class="dbl"><use href="#i-heart-f"/></svg></div>
+                  <div class="post-a"><span class="hrt"><svg class="h0"><use href="#i-heart"/></svg><svg class="h1"><use href="#i-heart-f"/></svg></span><svg><use href="#i-comment"/></svg><svg><use href="#i-send"/></svg></div>
+                  <div class="lk"><span class="avs"><i></i><i></i><i></i></span><span>Beğenildi</span></div>
+                  <div class="cm"><b>ayse_k</b> Çok güzel görünüyor, nereden alabilirim?</div>
                 </div>
                 <div class="post-h"><img class="av" src="assets/aymar-logo.webp" alt=""><div><b>Aymar</b><small>Instagram</small></div></div>
                 <img class="post-img" src="assets/ornek-aymar-mucver.webp" alt="">
@@ -804,6 +841,14 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
           </div>
           <div class="fx notif nt6"><span class="n-ic fb">f</span><div class="n-tx"><div class="n-h"><b>Facebook</b><i>şimdi</i></div><span>Gönderin sayfanda paylaşıldı</span></div></div>
 
+          <!-- sahne 6: ilgi ve etkileşim -->
+          <div class="fx engc keep"><h5>Etkileşim</h5>
+            <div class="er"><i class="h"><svg><use href="#i-heart-f"/></svg></i>Beğeniler</div>
+            <div class="er"><i class="c"><svg><use href="#i-comment"/></svg></i>Yorumlar</div>
+            <div class="er"><i class="m"><svg><use href="#i-send"/></svg></i>Mesajlar</div>
+          </div>
+          <div class="fx notif nt8"><span class="n-ic ig"><img src="assets/instagram-transparent.svg" alt=""></span><div class="n-tx"><div class="n-h"><b>Instagram</b><i>şimdi</i></div><span>Gönderine yorum yapıldı</span></div></div>
+
           <span class="devnote">Temsili ekran ve bildirimler</span>
         </div>
       </div>
@@ -818,7 +863,7 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
   <div class="wrap intro-block">
     <p class="eyebrow" data-reveal>02 / Meta reklam yönetimi</p>
     <h2 class="h2" data-split>Reklamın <em>her aşaması.</em></h2>
-    <p class="lead" data-reveal style="--d:.3s">Tanıtım ihtiyacına uygun reklam kurgusundan hedef kitle analizine ve reklamların yönetimine kadar çalışmaları yürütüyorum.</p>
+    <p class="lead" data-reveal style="--d:.3s">Kurgudan hedef kitleye, yayından takibe: bir reklamın Meta üzerindeki yolu.</p>
   </div>
 
   <div class="story" data-story="ads" data-n="3" data-map="0,1,2" style="--n:3">
@@ -884,9 +929,9 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
     <div class="work-intro">
       <div>
         <p class="eyebrow" data-reveal>03 / Marka deneyimi</p>
-        <h2 class="h2" data-split>Çalıştığım <em>markalar.</em></h2>
+        <h2 class="h2" data-split>Markalar ve <em>çalışmalar.</em></h2>
       </div>
-      <p class="lead" data-reveal style="--d:.3s">Güncel olarak yönettiğim ve geçmişte çalışma yürüttüğüm markalar.</p>
+      <p class="lead" data-reveal style="--d:.3s">Güncel ve geçmiş marka çalışmaları.</p>
     </div>
 
     <div class="stats">
@@ -941,7 +986,7 @@ html.go .gen:after{animation:shimmer 1.6s linear infinite}
   </div>
   <div class="wrap">
     <p class="eyebrow" data-reveal>Bir sonraki adım</p>
-    <h2 class="h2" data-split>İletişime <em>geçelim.</em></h2>
+    <h2 class="h2" data-split>Sıradaki hikâye <em>sizin markanızın.</em></h2>
     <p class="lead" data-reveal style="--d:.3s">Sosyal medya hesap yönetimi, içerik üretimi veya Meta reklam çalışmalarınız için görüşebiliriz.</p>
     <div class="who" id="who" data-reveal style="--d:.4s"></div>
     <button class="totop" type="button" id="totop">↑ Başa dön</button>
@@ -1155,6 +1200,7 @@ function setStory(s,p){
   s.crumbs.forEach((el,i)=>el.classList.toggle('on',i===act));
   s.subs.forEach(li=>{const k=+li.dataset.st;li.classList.toggle('on',act===k);li.classList.toggle('done',act>k)});
   if(s.type==='social'){
+    s.el.classList.toggle('eng',act===5);
     const run=(w[2]+w[3])>.2;
     if(run&&phoneVid.paused&&phoneVid.currentTime>9)phoneVid.currentTime=0;
     vplay(phoneVid,run);
