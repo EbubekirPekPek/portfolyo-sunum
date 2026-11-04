@@ -5,12 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f3f5f8">
 <meta name="description" content="Instagram ve Facebook hesap yönetimi, görsel ve video üretimi, Meta reklam yönetimi. Portfolyo sunumu.">
+<link rel="canonical" href="https://ebubekirpekpek.github.io/portfolyo-sunum/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Portfolyo">
+<meta property="og:title" content="Bir fikir, bir paylaşım, sonra gelen ilgi · Portfolyo">
+<meta property="og:description" content="Instagram ve Facebook hesapları, görseller, videolar ve Meta reklamları. Bir markanın sosyal medya akışı, adım adım.">
+<meta property="og:url" content="https://ebubekirpekpek.github.io/portfolyo-sunum/">
+<meta property="og:image" content="https://ebubekirpekpek.github.io/portfolyo-sunum/assets/og-kapak.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Portfolyo: Bir fikir, bir paylaşım, sonra gelen ilgi. Vita ve Aymar sosyal medya çalışmaları.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bir fikir, bir paylaşım, sonra gelen ilgi · Portfolyo">
+<meta name="twitter:description" content="Instagram ve Facebook hesapları, görseller, videolar ve Meta reklamları. Bir markanın sosyal medya akışı, adım adım.">
+<meta name="twitter:image" content="https://ebubekirpekpek.github.io/portfolyo-sunum/assets/og-kapak.jpg">
 <title>Sosyal Medya ve Meta Reklam Yönetimi | Portfolyo</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230d1117'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%230866ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('portfolyo-perde')||location.hash||localStorage.getItem('portfolyo-hareket')==='off')document.documentElement.classList.add('nocurtain');else sessionStorage.setItem('portfolyo-perde','1')}catch(e){}</script>
 <style>
 /* =========================================================
    TEMA: Meta mavisi + grafit  (bölümler arası renk geçişi)
@@ -739,6 +754,66 @@ html.go .dl i{animation:ping3 2.2s ease-out infinite}
   .nt1{left:-48%;width:156px}
 }
 
+/* =========================================================
+   v8: GÖRÜNTÜLEYİCİ · ÖZEL İMLEÇ · MARKA ÖNİZLEMESİ · PERDE
+   ========================================================= */
+/* tam ekran çalışma görüntüleyici */
+.cf-card{cursor:zoom-in}
+.cf-card:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.cf-zoom{position:absolute;left:12px;bottom:12px;z-index:2;display:inline-flex;align-items:center;padding:9px 13px;border-radius:99px;background:rgb(255 255 255/.94);color:#10151c;font:700 11px/1 var(--ui);opacity:0;translate:0 6px;transition:opacity .4s,translate .5s var(--ease);pointer-events:none}
+.cf-card:hover .cf-zoom,.cf-card:focus-visible .cf-zoom{opacity:1;translate:0 0}
+@media(hover:none){.cf-zoom{opacity:1;translate:0 0}}
+.lb{position:fixed;inset:0;z-index:120;display:grid;place-items:center;opacity:0;visibility:hidden;touch-action:none;overscroll-behavior:contain;transition:opacity .35s var(--ease),visibility 0s .35s}
+.lb.on{opacity:1;visibility:visible;transition:opacity .35s var(--ease)}
+.lb-bg{position:absolute;inset:0;background:rgb(5 9 15/.93)}
+.lb-fig{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;max-width:94vw;margin:0;scale:.95;transition:scale .55s var(--ease)}
+.lb.on .lb-fig{scale:1}
+.lb-media img,.lb-media video{display:block;border-radius:14px;background:#111823;object-fit:contain;box-shadow:0 40px 80px -30px rgb(0 0 0/.8),0 0 0 1px rgb(255 255 255/.08)}
+.lb figcaption{max-width:640px;text-align:center;color:#fff}
+.lb figcaption h4{margin:0;font:500 clamp(18px,2vw,24px)/1.3 var(--ui);letter-spacing:-.02em}
+.lb figcaption p{margin:6px 0 0;font:400 14px/1.55 var(--ui);color:#b3bfd0}
+.lb-count{position:absolute;z-index:2;left:50%;top:28px;translate:-50% 0;font:700 11px/1 var(--ui);letter-spacing:.16em;color:#b3bfd0}
+.lb-x,.lb-nav{position:absolute;z-index:2;display:grid;place-items:center;width:46px;height:46px;padding:0 0 3px;border:0;border-radius:50%;background:rgb(255 255 255/.13);color:#fff;font-size:28px;line-height:1;cursor:pointer;transition:background .3s,transform .4s var(--ease)}
+.lb-x{top:18px;right:18px}
+.lb-prev{left:18px;top:50%;margin-top:-23px}
+.lb-next{right:18px;top:50%;margin-top:-23px}
+.lb-x:hover,.lb-nav:hover{background:#0866ff;transform:scale(1.08)}
+html.lb-open{overflow:hidden}
+@media(max-width:900px){.lb-nav{top:auto;bottom:22px;margin:0}.lb-prev{left:22px}.lb-next{right:22px}}
+/* özel imleç halkası + marka önizlemesi (yalnızca fare) */
+.cring{position:fixed;left:0;top:0;z-index:150;display:grid;place-items:center;width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid color-mix(in srgb,var(--accent) 75%,transparent);border-radius:50%;color:var(--card);font:700 11px/1 var(--ui);letter-spacing:.04em;pointer-events:none;opacity:0;transition:opacity .3s,width .45s var(--ease),height .45s var(--ease),margin .45s var(--ease),background .3s,border-color .3s}
+.cring.show{opacity:1}
+.cring.hov{width:58px;height:58px;margin:-29px 0 0 -29px;background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.cring.lab{width:84px;height:84px;margin:-42px 0 0 -42px;border-color:transparent;background:var(--accent)}
+.cring span{opacity:0;transition:opacity .25s}
+.cring.lab span{opacity:1}
+html:not(.cur-on) .cring,html:not(.cur-on) .peek{display:none}
+.peek{position:fixed;left:0;top:0;z-index:149;width:clamp(150px,14vw,220px);aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 30px 60px -22px rgb(8 20 45/.55),0 0 0 1px rgb(0 0 0/.06);pointer-events:none;opacity:0;scale:.82;transition:opacity .3s,scale .5s var(--ease)}
+.peek.on{opacity:1;scale:1}
+.peek img{display:block;width:100%;height:100%;object-fit:cover}
+/* açılış perdesi */
+.curtain{display:none}
+.js .curtain{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:#0757e6;color:#fff;border-radius:0 0 50% 50%/0 0 12vh 12vh;pointer-events:none;animation:cu-out .95s var(--ease-io) .8s forwards}
+.js.nocurtain .curtain{display:none}
+@keyframes cu-out{0%{transform:translateY(0);visibility:visible}99%{visibility:visible}100%{transform:translateY(-104%);visibility:hidden}}
+.cu-in{display:flex;align-items:center;gap:14px;animation:cu-in .7s var(--ease) both}
+@keyframes cu-in{from{opacity:0;translate:0 16px}}
+.cu-mark{position:relative;width:30px;height:30px;border-radius:50%;background:conic-gradient(from 210deg,#fff,#cfe2ff 45%,#fff 70%,#9cc2ff);animation:spin 2.4s linear infinite}
+.cu-mark:after{content:"";position:absolute;inset:8px;border-radius:50%;background:#0757e6}
+.cu-name{font-family:var(--serif);font-style:italic;font-size:clamp(34px,5vw,50px);line-height:1;padding-bottom:3px}
+.cu-tag{padding:6px 11px;border:1px solid rgb(255 255 255/.55);border-radius:99px;font:600 11px/1 var(--ui);letter-spacing:.24em;text-transform:uppercase}
+@media(prefers-reduced-motion:reduce){.js .curtain{display:none}}
+/* reklam panelinde gezinen imleç */
+.cur{position:absolute;left:0;top:0;z-index:6;width:22px;height:22px;margin:-3px 0 0 -3px;pointer-events:none;translate:var(--cx,0px) var(--cy,0px);opacity:var(--cv,0);filter:drop-shadow(0 2px 3px rgb(0 0 0/.35))}
+.cur svg{display:block;width:100%;height:100%;transform-origin:3px 3px;scale:var(--cs,1)}
+.cur i{position:absolute;left:-12px;top:-12px;width:30px;height:30px;border:2px solid #0866ff;border-radius:50%;opacity:var(--ro,0);scale:var(--rs,.4)}
+/* Paylaş düğmesine parmak dokunuşu + patlama */
+.finger{position:absolute;z-index:4;left:calc(50% - 17px);bottom:10px;width:34px;height:34px;border-radius:50%;background:rgb(255 255 255/.6);box-shadow:0 0 0 2px rgb(8 20 45/.28),0 8px 18px rgb(8 20 45/.35);pointer-events:none;opacity:calc(clamp(0,calc(var(--b51,0)*3),1)*(1 - clamp(0,calc((var(--b52,0) - .25)*4),1)));translate:calc((1 - var(--b51,0))*46px) calc((1 - var(--b51,0))*58px);scale:calc(1 - .28*clamp(0,calc(var(--b52,0)*5),1)*(1 - clamp(0,calc((var(--b52,0) - .4)*5),1)))}
+.finger:after{content:"";position:absolute;inset:11px;border-radius:50%;background:rgb(8 20 45/.5)}
+.tap{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px;border-radius:50%;background:rgb(255 255 255/.55);pointer-events:none;opacity:calc(clamp(0,calc(var(--b52,0)*6),1)*(1 - var(--b52,0)));scale:calc(.3 + 3.6*var(--b52,0))}
+.burst{--q:clamp(0,calc((var(--b52,0) - .18)*2),1);position:absolute;left:50%;bottom:29px;z-index:4;width:0;height:0;pointer-events:none}
+.burst i{position:absolute;left:-3.5px;top:-3.5px;width:7px;height:7px;border-radius:50%;background:var(--c);opacity:calc(clamp(0,calc(var(--q)*6),1)*(1 - var(--q)));translate:calc(var(--dx)*var(--q)) calc(var(--dy)*var(--q))}
+
 /* ---------- duraklatma (ziyaretçi durdurduysa) ---------- */
 html.still [data-reveal],html.still [data-split] .w>span,html.still .ln>span,html.still .depth{transition:none;animation:none}
 html.still .top,html.still .ln.em>span:after,html.still .nstack .notif,html.still .lv-t b{transition:none}
@@ -750,6 +825,8 @@ html.calm .depth{--rr:0deg}
 </style>
 </head>
 <body data-theme="paper">
+
+<div class="curtain" aria-hidden="true"><div class="cu-in"><i class="cu-mark"></i><span class="cu-name">Portfolyo</span><span class="cu-tag">dijital</span></div></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 6.1-8 11-8 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -941,7 +1018,9 @@ html.calm .depth{--rr:0deg}
           <div class="fx share keep">
             <div class="share-h"><b>Yeni gönderi</b><u>Paylaş</u></div>
             <div class="share-r"><img src="assets/kek-post.webp" alt=""><div style="flex:1"><span></span><span style="width:62%"></span></div></div>
-            <div class="share-b"><span class="a">Paylaş</span><span class="b"><svg><use href="#i-check"/></svg>Paylaşıldı</span></div>
+            <div class="share-b"><span class="a">Paylaş</span><span class="b"><svg><use href="#i-check"/></svg>Paylaşıldı</span><i class="tap"></i></div>
+            <div class="burst"><i style="--dx:-52px;--dy:-44px;--c:#ff3040"></i><i style="--dx:-24px;--dy:-66px;--c:#0866ff"></i><i style="--dx:8px;--dy:-72px;--c:#f7b928"></i><i style="--dx:38px;--dy:-60px;--c:#31a24c"></i><i style="--dx:60px;--dy:-34px;--c:#ff3040"></i><i style="--dx:-62px;--dy:-14px;--c:#f7b928"></i><i style="--dx:-40px;--dy:-30px;--c:#31a24c"></i><i style="--dx:50px;--dy:-52px;--c:#0866ff"></i></div>
+            <i class="finger"></i>
           </div>
           <div class="fx notif nt6"><span class="n-ic fb">f</span><div class="n-tx"><div class="n-h"><b>Facebook</b><i>şimdi</i></div><span>Gönderin sayfanda paylaşıldı</span></div></div>
 
@@ -984,7 +1063,7 @@ html.calm .depth{--rr:0deg}
           <div class="cv-nav"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 
           <!-- sahne 1: reklam oluşturma + Instagram akışı önizlemesi -->
-          <div class="st a"><div class="am">
+          <div class="st a"><div class="cur" aria-hidden="true"><i></i><svg viewBox="0 0 22 22"><path d="M3 3l13.5 6.2-5.6 1.7 3.6 6.5-2.6 1.4-3.6-6.4-4.2 4.1z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div><div class="am">
             <div class="mc form">
               <h6>Reklam oluştur <u>Taslak</u></h6>
               <div class="fld f1"><label>Reklam adı</label><div class="in"><span class="ty">Vita · Baklava</span></div></div>
@@ -1008,7 +1087,7 @@ html.calm .depth{--rr:0deg}
           <div class="notif cv-n a"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Reklam taslağı hazır</span></div></div></div>
 
           <!-- sahne 2: kitle ve kitle tanımı göstergesi -->
-          <div class="st b"><div class="am">
+          <div class="st b"><div class="cur" aria-hidden="true"><i></i><svg viewBox="0 0 22 22"><path d="M3 3l13.5 6.2-5.6 1.7 3.6 6.5-2.6 1.4-3.6-6.4-4.2 4.1z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div><div class="am">
             <div class="mc form">
               <h6>Kitle <u>Reklam seti</u></h6>
               <div class="fld g1"><label>Konum</label><div class="in"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.4" fill="currentColor"/></svg><span>Türkiye</span><i>×</i></div></div>
@@ -1028,7 +1107,7 @@ html.calm .depth{--rr:0deg}
           <div class="notif cv-n b"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Hedef kitle kaydedildi</span></div></div></div>
 
           <!-- sahne 3: kampanya tablosu ve sonuç grafiği -->
-          <div class="st c"><div class="amc">
+          <div class="st c"><div class="cur" aria-hidden="true"><i></i><svg viewBox="0 0 22 22"><path d="M3 3l13.5 6.2-5.6 1.7 3.6 6.5-2.6 1.4-3.6-6.4-4.2 4.1z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div><div class="amc">
             <div class="tb"><div class="tabs"><span>Kampanyalar</span><span>Reklam setleri</span><span class="on">Reklamlar</span></div><div class="tbr"><span class="dt">Son 7 gün ▾</span><span class="mk">+ Oluştur</span></div></div>
             <div class="mc tbl">
               <div class="tr th"><span></span><span>Reklam</span><span>Yayın</span><span>Sonuçlar</span><span>Erişim</span></div>
@@ -1074,9 +1153,9 @@ html.calm .depth{--rr:0deg}
     </div>
 
     <div class="brands">
-      <div class="brand" data-reveal><span class="no">01</span><div class="logo"><img src="assets/vita-logo.webp" alt="Vita logosu"></div><div><h3>Vita Margarin</h3><p>Güncel marka çalışması</p></div><span class="status now">Güncel</span></div>
-      <div class="brand" data-reveal><span class="no">02</span><div class="logo"><img src="assets/aymar-logo.webp" alt="Aymar logosu"></div><div><h3>Aymar Yağ</h3><p>Güncel marka çalışması</p></div><span class="status now">Güncel</span></div>
-      <div class="brand" data-reveal><span class="no">03</span><div class="logo ari"><img src="assets/arikovanistore.jpg" alt="Arikovanistore logosu"></div><div><h3>Arikovanistore</h3><p>Geçmiş marka çalışması</p></div><span class="status">Geçmiş</span></div>
+      <div class="brand" data-reveal data-peek="assets/vita-baklava.webp"><span class="no">01</span><div class="logo"><img src="assets/vita-logo.webp" alt="Vita logosu"></div><div><h3>Vita Margarin</h3><p>Güncel marka çalışması</p></div><span class="status now">Güncel</span></div>
+      <div class="brand" data-reveal data-peek="assets/aymar-pisi-tarif.webp"><span class="no">02</span><div class="logo"><img src="assets/aymar-logo.webp" alt="Aymar logosu"></div><div><h3>Aymar Yağ</h3><p>Güncel marka çalışması</p></div><span class="status now">Güncel</span></div>
+      <div class="brand" data-reveal data-peek="assets/arikovanistore.jpg" data-fit="contain"><span class="no">03</span><div class="logo ari"><img src="assets/arikovanistore.jpg" alt="Arikovanistore logosu"></div><div><h3>Arikovanistore</h3><p>Geçmiş marka çalışması</p></div><span class="status">Geçmiş</span></div>
     </div>
   </div>
 
@@ -1128,6 +1207,20 @@ html.calm .depth{--rr:0deg}
 
 </main>
 
+<div class="lb" id="lb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Çalışma görüntüleyici">
+  <div class="lb-bg" id="lbbg"></div>
+  <figure class="lb-fig">
+    <div class="lb-media" id="lbm"></div>
+    <figcaption><h4 id="lbt"></h4><p id="lbp"></p></figcaption>
+  </figure>
+  <span class="lb-count" id="lbc"></span>
+  <button class="lb-x" type="button" id="lbx" aria-label="Kapat">×</button>
+  <button class="lb-nav lb-prev" type="button" id="lbprev" aria-label="Önceki çalışma">‹</button>
+  <button class="lb-nav lb-next" type="button" id="lbnext" aria-label="Sonraki çalışma">›</button>
+</div>
+<div class="cring" id="cring" aria-hidden="true"><span></span></div>
+<div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
+
 <p class="mhint" id="mhint" hidden>Sisteminde “hareketi azalt” açık, bu yüzden sayfa sakin hareketle açıldı.<br><button type="button" id="mfull">Tam hareket</button></p>
 <nav class="dock" aria-label="Sunum gezinmesi">
   <button id="prev" type="button" aria-label="Önceki bölüm">←</button>
@@ -1155,7 +1248,7 @@ const store={get(){try{return localStorage.getItem('portfolyo-hareket')}catch(e)
    (eğim, paralaks, dağılma, atalet kaydırma) kapalıdır: calm. "Tam hareket" ('on') ile açılabilir. */
 const saved=store.get();
 let still=saved==='off',calm=reduce.matches&&saved!=='on',lite=false,vh=innerHeight,vw=innerWidth,docH=1;
-const syncMode=()=>{root.classList.toggle('go',!still&&!lite);root.classList.toggle('still',still);root.classList.toggle('lite',lite);root.classList.toggle('calm',calm&&!still)};
+const syncMode=()=>{root.classList.toggle('go',!still&&!lite);root.classList.toggle('still',still);root.classList.toggle('lite',lite);root.classList.toggle('calm',calm&&!still);root.classList.toggle('cur-on',fine&&!still&&!lite)};
 
 /* ---------- metni kelime kelime böl ---------- */
 function splitNode(node,idx){
@@ -1194,7 +1287,7 @@ const sm={target:0,cur:0,rate:6.5,last:0,active:false,max:0};
 const coarse=matchMedia('(pointer:coarse)').matches;
 const canSmooth=()=>fine&&!coarse&&!still&&!lite&&!calm;
 addEventListener('wheel',e=>{
-  if(e.ctrlKey||e.defaultPrevented||!canSmooth())return;
+  if(e.ctrlKey||e.defaultPrevented||lbOpen||!canSmooth())return;
   let d=e.deltaY;if(e.deltaMode===1)d*=32;else if(e.deltaMode===2)d*=vh;
   if(!sm.active){sm.cur=sm.target=scrollY}
   sm.target=clamp(sm.target+d,0,sm.max);sm.rate=6.5;sm.active=true;e.preventDefault();
@@ -1229,7 +1322,7 @@ $('#prev').addEventListener('click',()=>go(curSec-1));
 $('#next').addEventListener('click',()=>go(curSec+1));
 $('#totop').addEventListener('click',()=>go(0));
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href'));if(t){e.preventDefault();scrollToY(t.getBoundingClientRect().top+scrollY)}}));
-addEventListener('keydown',e=>{if(e.target.closest('input,textarea,button,select'))return;if(e.key==='ArrowRight')go(curSec+1);if(e.key==='ArrowLeft')go(curSec-1)});
+addEventListener('keydown',e=>{if(lbOpen||e.target.closest('input,textarea,button,select'))return;if(e.key==='ArrowRight')go(curSec+1);if(e.key==='ArrowLeft')go(curSec-1)});
 
 /* ---------- hareket düğmesi ---------- */
 const mBtn=$('#motion'),mHint=$('#mhint');
@@ -1280,6 +1373,7 @@ function measure(){
   stories.forEach(s=>{const r=s.el.getBoundingClientRect();s.abs=r.top+scrollY;s.h=r.height});
   par.forEach(p=>{const t=p.el.style.transform;p.el.style.transform='';const r=p.el.getBoundingClientRect();p.c=r.top+scrollY+r.height/2;p.el.style.transform=t});
   mqs.forEach(m=>{m.w=m.set.offsetWidth||1;const r=m.el.getBoundingClientRect();m.abs=r.top+scrollY});
+  adCursorMeasure();
 }
 let mt;const remeasure=()=>{clearTimeout(mt);mt=setTimeout(measure,120)};
 addEventListener('resize',remeasure);addEventListener('load',()=>{measure();setTimeout(measure,600)});
@@ -1322,7 +1416,7 @@ function setStory(s,p){
     const n=s.n,a=clamp((p-.06)/.88)*(n-1),idx=Math.round(a);
     set('--a',a);
     s.cards.forEach((g,i)=>{g.c.style.zIndex=String(20-Math.round(Math.abs(i-a)*4));
-      if(g.v){const on=Math.abs(i-a)<.55&&p>0;vplay(g.v,on);if(!on&&!g.v.muted){g.v.muted=true;g.snd.setAttribute('aria-pressed','false');g.snd.textContent='♪ Sesi aç'}}});
+      if(g.v){const on=Math.abs(i-a)<.55&&p>0&&!lbOpen;vplay(g.v,on);if(!on&&!g.v.muted){g.v.muted=true;g.snd.setAttribute('aria-pressed','false');g.snd.textContent='♪ Sesi aç'}}});
     s.dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
     return;
   }
@@ -1351,6 +1445,7 @@ function setStory(s,p){
     s.pct.forEach(el=>{if(el.textContent!==pc)el.textContent=pc});
   }
   if(s.type==='ads'){
+    adCur.forEach((c,i)=>adCursorSet(c,l[i]));
     const path=$('.cl',s.el),dot=$('.cd2',s.el);
     if(path&&dot){
       /* noktayı çizginin x konumuna göre bul (grafik soldan sağa açılıyor) */
@@ -1362,10 +1457,159 @@ function setStory(s,p){
   }
 }
 
+/* ---------- tam ekran çalışma görüntüleyici ---------- */
+const lb=$('#lb'),lbm=$('#lbm'),lbt=$('#lbt'),lbp=$('#lbp'),lbc=$('#lbc');
+let lbOpen=false,lbIdx=0,lbFrom=null;
+const works=gal?gal.cards.map((g,i)=>({
+  card:g.c,video:g.v||null,img:$('img',g.c),
+  title:(($$('.cap h4',gal.el)[i]||{}).textContent)||'',text:(($$('.cap p',gal.el)[i]||{}).textContent)||''
+})):[];
+function lbFit(){
+  const el=lbm.firstElementChild;if(!el)return;
+  const r=+el.dataset.r,mw=Math.min(innerWidth*.92,1100),mh=Math.max(220,innerHeight-190),h=Math.min(mh,mw/r);
+  el.style.height=h.toFixed(0)+'px';el.style.width=(h*r).toFixed(0)+'px';
+}
+function lbShow(i){
+  if(!works.length)return;
+  lbIdx=(i+works.length)%works.length;const w=works[lbIdx];
+  lbm.textContent='';
+  const r=w.card.classList.contains('v')?9/16:4/5;let el;
+  if(w.video){
+    el=document.createElement('video');el.src=w.video.getAttribute('src');el.poster=w.video.getAttribute('poster')||'';
+    el.controls=true;el.loop=true;el.playsInline=true;el.setAttribute('playsinline','');el.preload='auto';
+  }else{el=document.createElement('img');el.src=w.img.currentSrc||w.img.src;el.alt=w.img.alt||''}
+  el.dataset.r=r;lbm.appendChild(el);lbFit();
+  if(el.play){const p=el.play();if(p)p.catch(()=>{el.muted=true;const q=el.play();if(q)q.catch(()=>{})})}
+  lbt.textContent=w.title;lbp.textContent=w.text;
+  lbc.textContent=String(lbIdx+1).padStart(2,'0')+' / '+String(works.length).padStart(2,'0');
+}
+function lbOpenAt(i,from){
+  lbFrom=from||null;lbOpen=true;root.classList.add('lb-open');lb.classList.add('on');lb.setAttribute('aria-hidden','false');
+  gal.cards.forEach(g=>{if(g.v)vplay(g.v,false)});
+  lbShow(i);$('#lbx').focus({preventScroll:true});
+}
+function lbClose(){
+  if(!lbOpen)return;
+  lbOpen=false;lb.classList.remove('on');lb.setAttribute('aria-hidden','true');root.classList.remove('lb-open');
+  const v=lbm.querySelector('video');if(v)v.pause();
+  setTimeout(()=>{if(!lbOpen)lbm.textContent=''},380);
+  if(lbFrom)lbFrom.focus({preventScroll:true});
+}
+if(gal&&works.length){
+  gal.cards.forEach((g,i)=>{
+    const z=document.createElement('span');z.className='cf-zoom';z.textContent='Büyüt  ⤢';g.c.appendChild(z);
+    g.c.dataset.cur='Büyüt';g.c.tabIndex=0;g.c.setAttribute('role','button');g.c.setAttribute('aria-label','Tam ekran aç: '+works[i].title);
+    g.c.addEventListener('click',e=>{if(e.target.closest('.snd'))return;lbOpenAt(i,g.c)});
+    g.c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();lbOpenAt(i,g.c)}});
+  });
+  $('#lbx').addEventListener('click',lbClose);$('#lbbg').addEventListener('click',lbClose);
+  $('#lbprev').addEventListener('click',()=>lbShow(lbIdx-1));$('#lbnext').addEventListener('click',()=>lbShow(lbIdx+1));
+  addEventListener('keydown',e=>{
+    if(!lbOpen)return;
+    if(e.key==='Escape'){lbClose();return}
+    if(e.key==='ArrowRight'){lbShow(lbIdx+1);e.preventDefault()}
+    if(e.key==='ArrowLeft'){lbShow(lbIdx-1);e.preventDefault()}
+    if(e.key==='Tab'){
+      const f=[$('#lbx'),$('#lbprev'),$('#lbnext'),lbm.querySelector('video')].filter(Boolean),k=f.indexOf(document.activeElement);
+      e.preventDefault();f[(k+(e.shiftKey?-1:1)+f.length)%f.length].focus({preventScroll:true});
+    }
+  });
+  let sx=0,sy=0,sid=null;
+  lb.addEventListener('pointerdown',e=>{if(e.target.closest('video,button'))return;sx=e.clientX;sy=e.clientY;sid=e.pointerId});
+  lb.addEventListener('pointerup',e=>{
+    if(sid!==e.pointerId)return;sid=null;
+    const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>60&&Math.abs(dy)<90)lbShow(lbIdx+(dx<0?1:-1));
+  });
+  addEventListener('resize',lbFit);
+}
+
+/* ---------- reklam panelinde gezinen imleç (kaydırmayla ilerler) ---------- */
+const adS=stories.find(s=>s.type==='ads'),adCur=[];
+if(adS){
+  const stA=$('.st.a',adS.el),stB=$('.st.b',adS.el),stC=$('.st.c',adS.el);
+  const q=(st,sel,i)=>()=>$$(sel,st)[i||0];
+  const n2=l=>clamp((l-.12)*1.35);
+  adCur.push({st:stA,cur:$('.cur',stA),clicks:[.64,.91],hold:null,cache:{},pts:[
+    {at:0,x:.84,y:.6},
+    {at:.11,el:q(stA,'.fld .in',0),fx:.3,fy:.5},
+    {at:.23,el:q(stA,'.fld .in',1),fx:.36,fy:.5},
+    {at:.37,el:q(stA,'.fld .in',2),fx:.42,fy:.5},
+    {at:.5,el:q(stA,'.fld .in',3),fx:.5,fy:.5},
+    {at:.64,el:q(stA,'.fld .in',4),fx:.55,fy:.5},
+    {at:.77,el:q(stA,'.ia-cta'),fx:.3,fy:.5},
+    {at:.91,el:q(stA,'.acts .pri'),fx:.5,fy:.5},
+    {at:1,el:q(stA,'.acts .pri'),fx:.62,fy:.7}
+  ]});
+  adCur.push({st:stB,cur:$('.cur',stB),clicks:[.73],hold:[.27,.62],cache:{},pts:[
+    {at:0,x:.82,y:.72},
+    {at:.12,el:q(stB,'.fld .in',0),fx:.3,fy:.5},
+    {at:.27,el:q(stB,'.sl-t'),fx:l=>1-.22*n2(l),fy:.5},
+    {at:.62,el:q(stB,'.sl-t'),fx:l=>1-.22*n2(l),fy:.5},
+    {at:.73,el:q(stB,'.seg span',0),fx:.5,fy:.5},
+    {at:.86,el:q(stB,'.chips span',1),fx:.5,fy:.5},
+    {at:.97,el:q(stB,'.gauge'),fx:.6,fy:.78}
+  ]});
+  adCur.push({st:stC,cur:$('.cur',stC),clicks:[.16,.42,.68],hold:null,cache:{},pts:[
+    {at:0,x:.78,y:.1},
+    {at:.12,el:q(stC,'.tr.r1 .tg'),fx:.5,fy:.5},
+    {at:.38,el:q(stC,'.tr.r2 .tg'),fx:.5,fy:.5},
+    {at:.64,el:q(stC,'.tr.r3 .tg'),fx:.5,fy:.5},
+    {at:.84,el:q(stC,'.plot'),fx:.9,fy:.22},
+    {at:1,el:q(stC,'.plot'),fx:.96,fy:.14}
+  ]});
+}
+function adCursorMeasure(){
+  adCur.forEach(c=>{
+    const w=c.st.offsetWidth,h=c.st.offsetHeight;
+    c.pp=c.pts.map(p=>{
+      if(!p.el)return{at:p.at,bx:p.x*w,by:p.y*h,bw:0,bh:0,fx:0,fy:0};
+      const el=p.el();if(!el||!el.offsetParent)return null;          /* gizli (ör. telefonda form) */
+      let x=0,y=0,e=el;while(e&&e!==c.st){x+=e.offsetLeft;y+=e.offsetTop;e=e.offsetParent}
+      if(e!==c.st)return null;
+      return{at:p.at,bx:x,by:y,bw:el.offsetWidth,bh:el.offsetHeight,fx:p.fx,fy:p.fy};
+    }).filter(Boolean);
+    c.on=c.pp.length>=3;c.cache={};
+  });
+}
+function adCursorSet(c,l){
+  const st=c.st,ca=c.cache,put=(k,v)=>{if(ca[k]!==v){ca[k]=v;st.style.setProperty(k,v)}};
+  if(!c.on||!c.pp){put('--cv','0');return}
+  const pp=c.pp;let i=0;while(i<pp.length-2&&l>pp[i+1].at)i++;
+  const a=pp[i],b=pp[i+1],k=ease(seg(l,a.at,b.at));
+  const fa=typeof a.fx==='function'?a.fx(l):a.fx,fb=typeof b.fx==='function'?b.fx(l):b.fx;
+  const ax=a.bx+a.bw*fa,ay=a.by+a.bh*a.fy,bx=b.bx+b.bw*fb,by=b.by+b.bh*b.fy;
+  const x=ax+(bx-ax)*k,y=ay+(by-ay)*k;
+  let ro=0,rs=.4;
+  for(const tc of c.clicks){const u=(l-tc)/.07;if(u>=0&&u<=1){ro=.85*(1-u);rs=.5+1.5*u}}
+  const pressed=c.clicks.some(tc=>l>tc-.025&&l<tc+.02)||(c.hold&&l>c.hold[0]&&l<c.hold[1]);
+  put('--cx',x.toFixed(1)+'px');put('--cy',y.toFixed(1)+'px');put('--cv','1');
+  put('--ro',ro.toFixed(2));put('--rs',rs.toFixed(2));put('--cs',pressed?'.86':'1');
+}
+
 /* ---------- ana döngü ---------- */
 const bar=$('.bar'),glow=$('.glow'),cue=$('.cue');
 let target=scrollY,cur=scrollY,prev=scrollY,vel=0,last=performance.now();
 let tx=0,ty=0,mx=0,my=0,gx=innerWidth/2,gy=innerHeight/2,gtx=gx,gty=gy,fT=0,fN=0,slow=0,t0=last;
+/* özel imleç halkası + marka önizlemesi (yalnızca fare) */
+const ring=$('#cring'),peek=$('#peek'),peekImg=$('img',peek);
+let rx=gtx,ry=gty,pkx=gtx,pky=gty,pang=0;
+if(fine){
+  addEventListener('pointermove',()=>ring.classList.add('show'),{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>ring.classList.remove('show'));
+  addEventListener('pointerover',e=>{
+    const t=e.target.closest&&e.target.closest('[data-cur],a,button,.brand');
+    ring.classList.toggle('hov',!!t);
+    const lab=t&&t.dataset.cur;
+    ring.classList.toggle('lab',!!lab);
+    if(lab)ring.firstElementChild.textContent=lab;
+    const b=e.target.closest&&e.target.closest('.brand');
+    if(b&&b.dataset.peek){
+      if(!peek.classList.contains('on')){pkx=gtx;pky=gty}
+      if(peekImg.getAttribute('src')!==b.dataset.peek)peekImg.src=b.dataset.peek;
+      peekImg.style.objectFit=b.dataset.fit||'cover';peek.classList.add('on');
+    }else peek.classList.remove('on');
+  },{passive:true});
+}
 if(fine){
   cover.addEventListener('pointermove',e=>{const r=cover.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5});
   cover.addEventListener('pointerleave',()=>{tx=ty=0});
@@ -1391,6 +1635,15 @@ function frame(now){
     const p=clamp((cur-s.abs)/Math.max(1,s.h-vh));
     if(Math.abs(p-s.p)>.0002||s.p<0){s.p=p;setStory(s,p)}
   });
+
+  if(fine&&!still&&!lite){
+    rx+=(gtx-rx)*.24;ry+=(gty-ry)*.24;
+    ring.style.transform='translate3d('+rx.toFixed(1)+'px,'+ry.toFixed(1)+'px,0)';
+    if(peek.classList.contains('on')){
+      pkx+=(gtx-pkx)*.14;pky+=(gty-pky)*.14;pang+=(clamp((gtx-pkx)*.07,-11,11)-pang)*.2;
+      peek.style.transform='translate3d('+(pkx+28).toFixed(1)+'px,'+(pky-160).toFixed(1)+'px,0) rotate('+pang.toFixed(2)+'deg)';
+    }
+  }
 
   if(!still&&!lite){
     if(!calm){
@@ -1442,7 +1695,10 @@ function frame(now){
 /* ---------- başlat ---------- */
 syncMode();setStill(still);
 measure();setSec(0);sm.cur=sm.target=scrollY;
-requestAnimationFrame(()=>requestAnimationFrame(()=>{root.classList.add('ready');vplay(heroVid,!still)}));
+/* açılış perdesi görünüyorsa giriş hareketleri perde yukarı çıkarken başlasın */
+const curtainEl=$('.curtain'),curtainOn=!!curtainEl&&getComputedStyle(curtainEl).display!=='none';
+if(curtainOn)setTimeout(()=>curtainEl.remove(),2200);
+requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(()=>{root.classList.add('ready');vplay(heroVid,!still)},curtainOn?1050:0)));
 requestAnimationFrame(frame);
 })()}catch(err){document.documentElement.classList.remove('js');console.error(err)}
 </script>
