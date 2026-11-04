@@ -452,65 +452,151 @@ html.go .story.eng .hb{animation:hb 2.8s ease-out var(--hd,0s) infinite}
 .devnote{position:absolute;left:0;right:0;bottom:-26px;text-align:center;font:500 10px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 
 /* =========================================================
-   REKLAM PANELİ
+   REKLAM PANELİ  (Meta Reklam Yöneticisi görünümünde)
    ========================================================= */
-.canvas{--c-ink:#0d1a2d;--c-mute:#64748b;--c-acc:#0866ff;--c-line:#d7e0ec;position:relative;justify-self:center;width:min(100%,660px);aspect-ratio:1.28/1;overflow:hidden;border-radius:18px;background:#f2f6fb;color:var(--c-ink);box-shadow:0 50px 80px -34px rgb(0 8 24/.8),0 0 0 1px rgb(255 255 255/.08);transform:perspective(1500px) rotateY(calc(10deg - 16deg*var(--p,0))) rotateX(2deg)}
-.cv-top{position:absolute;left:0;right:0;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;height:54px;padding:0 20px;background:#f2f6fb;border-bottom:1px solid var(--c-line)}
-.cv-top img{display:block;width:84px;height:auto}
-.crumbs{display:flex;gap:6px;font:700 11px/1 var(--ui)}
-.crumbs li{padding:7px 12px;border-radius:99px;color:var(--c-mute);transition:background .5s,color .5s}
-.crumbs li.on{background:var(--c-ink);color:#f2f6fb}
-.cv-note{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:9px 20px;background:#f2f6fb;border-top:1px solid var(--c-line);font-size:10px;color:var(--c-mute)}
-.st{position:absolute;left:0;right:0;top:54px;bottom:34px}
+.canvas{--c-ink:#1c1e21;--c-mute:#65676b;--c-acc:#0866ff;--c-line:#dadde1;--am:"Segoe UI",Helvetica,Arial,sans-serif;position:relative;justify-self:center;width:min(100%,740px);aspect-ratio:1.42/1;overflow:hidden;border-radius:14px;background:#f0f2f5;color:var(--c-ink);font-family:var(--am);box-shadow:0 50px 80px -34px rgb(0 8 24/.8),0 0 0 1px rgb(255 255 255/.08);transform:perspective(1500px) rotateY(calc(10deg - 16deg*var(--p,0))) rotateX(2deg)}
+.cv-top{position:absolute;left:0;right:0;top:0;z-index:3;display:flex;align-items:center;gap:12px;height:50px;padding:0 16px;background:#fff;border-bottom:1px solid var(--c-line)}
+.cv-top img{display:block;width:78px;height:auto}
+.cv-sep{width:1px;height:20px;background:var(--c-line)}
+.cv-ttl{font:600 12px/1 var(--am);color:var(--c-mute);white-space:nowrap}
+.crumbs{display:flex;gap:4px;margin-left:auto;font:600 12px/1 var(--am)}
+.crumbs li{padding:8px 12px;border-radius:6px;color:var(--c-mute);white-space:nowrap;transition:background .5s,color .5s}
+.crumbs li.on{background:#e7f3ff;color:#0866ff}
+.cv-nav{position:absolute;left:0;top:50px;bottom:31px;z-index:2;width:44px;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:14px;background:#fff;border-right:1px solid var(--c-line)}
+.cv-nav i{display:block;width:22px;height:22px;border-radius:7px;background:#e4e6eb}
+.cv-nav i.on{background:#e7f3ff;box-shadow:inset 0 0 0 2px #0866ff}
+.cv-note{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:9px 16px;background:#fff;border-top:1px solid var(--c-line);font:500 10px/1.2 var(--am);color:var(--c-mute)}
+.st{position:absolute;left:44px;right:0;top:50px;bottom:31px}
 .st.a{opacity:var(--w1,1)}
-.st.b{opacity:var(--w2,0)}
+.st.b{opacity:var(--w2,0);--n2:clamp(0,calc((var(--l2,0) - .12)*1.35),1)}
 .st.c{opacity:var(--w3,0)}
-.cv-n{right:14px;top:12px;width:230px;z-index:5}
-.cv-n.a{opacity:calc(var(--b13,0)*var(--w1,1));translate:0 calc((1 - var(--b13,0))*-30px)}
+.cv-n{right:12px;top:7px;width:236px;z-index:5}
+.cv-n.a{top:auto;bottom:14px;right:16px;opacity:calc(var(--b13,0)*var(--w1,1));translate:0 calc((1 - var(--b13,0))*30px)}
 .cv-n.b{opacity:calc(var(--b23,0)*var(--w2,0));translate:0 calc((1 - var(--b23,0))*-30px)}
-.cv-n.c{opacity:calc(var(--b33,0)*var(--w3,0));translate:0 calc((1 - var(--b33,0))*-30px)}
+.cv-n.c{top:auto;bottom:14px;right:16px;opacity:calc(var(--b33,0)*var(--w3,0));translate:0 calc((1 - var(--b33,0))*30px)}
 
-.ads{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:5%;padding:0 6%}
-.ad{position:relative;width:38%;border:1px solid var(--c-line);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 20px 30px -20px rgb(8 20 45/.5)}
-.ad.x1{opacity:var(--b11,0);translate:calc((1 - var(--b11,0))*-90px) calc((1 - var(--b11,0))*30px);rotate:calc(-6deg*(1 - var(--b11,0)))}
-.ad.x2{opacity:var(--b12,0);translate:calc((1 - var(--b12,0))*90px) calc((1 - var(--b12,0))*30px);rotate:calc(6deg*(1 - var(--b12,0)))}
-.ad-h{display:flex;align-items:center;gap:7px;padding:7px 9px;font-size:10px}
-.ad-h .av{width:22px;height:22px}
-.ad-h small{display:block;font-size:8px;color:var(--c-mute)}
-.ad img.pic{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
-.ad-f{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 9px;background:#f3f6fb;font-size:9px;font-weight:700}
-.ad-f u{padding:5px 8px;border-radius:5px;background:#dfe9fb;color:#0a4fcf;text-decoration:none;font-size:8px}
-.tag{position:absolute;padding:5px 9px;border-radius:99px;background:var(--c-ink);color:#f2f6fb;font:700 9px/1 var(--ui);opacity:var(--b13,0);scale:calc(.6 + .4*var(--b13,0))}
-.tag.g{left:-6px;top:38%}
-.tag.t{right:-6px;top:10px}
-.tag.k{right:-6px;bottom:8px}
+/* paylaşılan Meta bileşenleri */
+.am{position:absolute;inset:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mc{background:#fff;border:1px solid var(--c-line);border-radius:10px;box-shadow:0 1px 2px rgb(0 0 0/.06)}
+.form{display:flex;flex-direction:column;gap:9px;min-height:0;padding:12px 14px}
+.form h6{display:flex;align-items:center;justify-content:space-between;margin:0 0 2px;font:700 13px/1 var(--am)}
+.form h6 u{padding:4px 8px;border-radius:6px;background:#e4e6eb;color:var(--c-mute);font:600 10px/1 var(--am);text-decoration:none}
+.fld label{display:block;margin-bottom:4px;font:600 10px/1 var(--am);color:var(--c-mute)}
+.fld .in{display:flex;align-items:center;gap:7px;min-height:28px;padding:5px 9px;border:1px solid #ccd0d5;border-radius:7px;background:#fff;font:500 11.5px/1.3 var(--am);color:var(--c-ink)}
+.fld .in .av{flex:none;width:18px;height:18px;padding:2px}
+.fld .in.media img{flex:none;width:30px;height:24px;border-radius:5px;object-fit:cover}
+.fld .in i{margin-left:auto;font-style:normal;color:var(--c-mute)}
+.fld .in svg{flex:none;width:14px;height:14px;color:var(--c-acc)}
+.ty{display:block;white-space:nowrap;clip-path:inset(0 calc((1 - var(--t,1))*100%) 0 0)}
 
-.radar{position:absolute;left:50%;top:48%;width:min(78%,300px);aspect-ratio:1;translate:-50% -50%;--r:calc(1 - .58*clamp(0,calc((var(--l2,0) - .12)*1.35),1))}
-.radar>.rg{position:absolute;border-radius:50%;border:1px solid var(--c-line)}
-.rg.g1{inset:0}.rg.g2{inset:18%}.rg.g3{inset:36%}
-.rg.t{inset:calc((1 - var(--r))*50%);border:2px solid var(--c-acc);background:color-mix(in srgb,var(--c-acc) 9%,transparent)}
-.dot{position:absolute;left:var(--x);top:var(--y);width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--c-acc);--hit:clamp(0,calc((var(--r) - var(--dx))*16),1);opacity:calc(.26 + .74*var(--hit));scale:calc(.8 + .7*var(--hit))}
-.crit{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px}
-.crit span{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid var(--c-line);border-radius:99px;background:#fff;font:700 11px/1 var(--ui)}
-.crit i{width:6px;height:6px;border-radius:50%;background:var(--c-acc)}
-.crit span:nth-child(1){opacity:var(--b21,0);translate:0 calc((1 - var(--b21,0))*16px)}
-.crit span:nth-child(2){opacity:var(--b22,0);translate:0 calc((1 - var(--b22,0))*16px)}
-.crit span:nth-child(3){opacity:var(--b23,0);translate:0 calc((1 - var(--b23,0))*16px)}
-.rad-l{position:absolute;left:5%;top:16px;font-size:10px;color:var(--c-mute);opacity:var(--b21,0)}
+/* sahne 1: reklam oluşturma + Instagram önizlemesi */
+.fld.f1{--t:clamp(0,calc((var(--b11,0) - .25)*1.5),1);opacity:var(--b11,0);translate:0 calc((1 - var(--b11,0))*10px)}
+.fld.f2{--t:clamp(0,calc((var(--b12,0) - .25)*1.5),1);opacity:var(--b12,0);translate:0 calc((1 - var(--b12,0))*10px)}
+.fld.f3{--t:clamp(0,calc((var(--b13,0) - .25)*1.5),1);opacity:var(--b13,0);translate:0 calc((1 - var(--b13,0))*10px)}
+.acts{display:flex;justify-content:flex-end;gap:8px;margin-top:auto}
+.acts span{padding:8px 14px;border-radius:7px;background:#e4e6eb;color:#4b4c4f;font:700 11px/1 var(--am)}
+.acts span.pri{background:color-mix(in srgb,#0866ff calc(var(--b13,0)*100%),#bcc0c4);color:#fff}
+.prev{display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden;padding:10px 12px}
+.ptabs{display:flex;gap:6px;font:600 10px/1 var(--am);color:var(--c-mute)}
+.ptabs span{padding:6px 9px;border-radius:99px;background:#f0f2f5}
+.ptabs span.on{background:#e7f3ff;color:#0866ff}
+.iga{overflow:hidden;border:1px solid #e4e6eb;border-radius:8px;background:#fff}
+.ia-h{display:flex;align-items:center;gap:7px;padding:7px 9px;font:700 11px/1.2 var(--am);opacity:var(--b11,0)}
+.ia-h .av{width:24px;height:24px;padding:2px}
+.ia-h small{display:block;font:400 9px/1.2 var(--am);color:var(--c-mute)}
+.ia-h i{margin-left:auto;font-style:normal;letter-spacing:1px;color:var(--c-mute)}
+.ia-i{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 44%;opacity:var(--b11,0);scale:calc(1.06 - .06*var(--b11,0))}
+.ia-cta{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#f0f2f5;font:700 10.5px/1 var(--am);opacity:var(--b13,0);translate:0 calc((1 - var(--b13,0))*8px)}
+.ia-cta i{font-style:normal;font-size:14px;color:var(--c-mute)}
+.ia-a{display:flex;gap:10px;padding:7px 9px 2px;opacity:var(--b12,0)}
+.ia-a svg{width:17px;height:17px}
+.ia-t{margin:0;padding:0 9px 8px;font:400 10.5px/1.4 var(--am);opacity:var(--b12,0)}
 
-.chart{position:absolute;left:6%;right:6%;top:14px;bottom:70px}
-.chart svg{display:block;width:100%;height:100%;overflow:visible}
-.gl{stroke:var(--c-line);stroke-width:1}
-.cl{fill:none;stroke:var(--c-acc);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc(var(--l3,0)*1.12),1))}
-.ca{fill:color-mix(in srgb,var(--c-acc) 13%,transparent);opacity:clamp(0,calc(var(--l3,0)*1.2),1)}
-.cd{fill:#fff;stroke:var(--c-acc);stroke-width:3}
-.kp{position:absolute;left:6%;right:6%;bottom:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.kp div{padding:8px 10px;border:1px solid var(--c-line);border-radius:9px;background:#fff;font:700 10px/1 var(--ui)}
-.kp i{display:block;height:5px;margin-top:7px;border-radius:5px;background:#e0e9f6;overflow:hidden}
-.kp i:after{content:"";display:block;height:100%;width:var(--fill);background:var(--c-acc);transform:scaleX(var(--k,0));transform-origin:left}
-.kp div:nth-child(1){--k:var(--b31,0);opacity:calc(.3 + .7*var(--b31,0))}
-.kp div:nth-child(2){--k:var(--b32,0);opacity:calc(.3 + .7*var(--b32,0))}
-.kp div:nth-child(3){--k:var(--b33,0);opacity:calc(.3 + .7*var(--b33,0))}
+/* sahne 2: kitle + kitle tanımı göstergesi */
+.fld.g1{opacity:var(--b21,0);translate:0 calc((1 - var(--b21,0))*10px)}
+.fld.g2{opacity:var(--b22,0);translate:0 calc((1 - var(--b22,0))*10px)}
+.fld.g3{opacity:var(--b23,0);translate:0 calc((1 - var(--b23,0))*10px)}
+.sl{display:flex;align-items:center;gap:12px;min-height:28px}
+.sl-t{position:relative;flex:1;height:4px;margin:0 8px;border-radius:4px;background:#ccd0d5}
+.sl-f{position:absolute;top:0;bottom:0;left:calc(var(--n2)*20%);right:calc(var(--n2)*22%);border-radius:4px;background:#0866ff}
+.sl-h{position:absolute;top:-6px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #0866ff,0 1px 3px rgb(0 0 0/.3)}
+.sl-h.l{left:calc(var(--n2)*20%)}
+.sl-h.r{left:calc(100% - var(--n2)*22%)}
+.sl-v{position:relative;flex:none;width:62px;height:14px;font:600 11.5px/14px var(--am);text-align:right}
+.sl-v span{position:absolute;right:0;top:0;white-space:nowrap}
+.sl-v .a{opacity:calc(1 - var(--n2))}
+.sl-v .b{opacity:var(--n2)}
+.seg{display:flex;overflow:hidden;border:1px solid #ccd0d5;border-radius:7px;font:600 11px/1 var(--am);color:var(--c-mute)}
+.seg span{flex:1;padding:8px 0;text-align:center}
+.seg span+span{border-left:1px solid #ccd0d5}
+.seg span.on{background:#e7f3ff;color:#0866ff}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{padding:6px 10px;border-radius:99px;background:#e7f3ff;color:#0a4fcf;font:600 11px/1 var(--am)}
+.chips span:nth-child(1){opacity:clamp(0,calc(var(--b23,0)*3),1)}
+.chips span:nth-child(2){opacity:clamp(0,calc(var(--b23,0)*3 - 1),1)}
+.chips span:nth-child(3){opacity:clamp(0,calc(var(--b23,0)*3 - 2),1)}
+.chips.m{display:none}
+.gaugec{display:flex;flex-direction:column;gap:7px;min-height:0;padding:12px 14px}
+.gaugec h6{margin:0 0 2px;font:700 13px/1 var(--am)}
+.gauge{display:block;width:100%;height:auto;max-width:300px;margin:0 auto}
+.gauge path{fill:none;stroke-width:16}
+.gauge .g0{stroke:#e4e6eb}
+.gauge .g1s{stroke:#f7b928;stroke-dasharray:31 100}
+.gauge .g2s{stroke:#31a24c;stroke-dasharray:31 100;stroke-dashoffset:-34.5}
+.gauge .g3s{stroke:#f7b928;stroke-dasharray:31 100;stroke-dashoffset:-69}
+.gauge .nd{transform-origin:100px 100px;transform:rotate(calc(66deg - 64deg*var(--n2)))}
+.gl{display:flex;justify-content:space-between;max-width:300px;margin:-2px auto 0;width:100%;font:600 10px/1 var(--am);color:var(--c-mute)}
+.gt{position:relative;height:16px;margin:2px 0 0;text-align:center;font:700 12px/16px var(--am)}
+.gt span{position:absolute;left:0;right:0;top:0}
+.gt .a{opacity:calc(1 - clamp(0,calc((var(--n2) - .55)*5),1))}
+.gt .b{opacity:clamp(0,calc((var(--n2) - .55)*5),1);color:#1f8a3b}
+.est{margin-top:auto}
+.est label{display:block;margin-bottom:6px;font:600 10px/1 var(--am);color:var(--c-mute)}
+.est .eb{display:block;height:8px;border-radius:8px;background:#e4e6eb;overflow:hidden}
+.est .eb i{display:block;height:100%;width:calc(90% - 42%*var(--n2));border-radius:8px;background:#0866ff}
+
+/* sahne 3: kampanya tablosu + sonuç grafiği */
+.amc{position:absolute;inset:12px;display:flex;flex-direction:column;gap:10px}
+.tb{display:flex;align-items:center;justify-content:space-between;gap:8px;opacity:var(--b31,0)}
+.tabs{display:flex;gap:2px;font:600 11.5px/1 var(--am);color:var(--c-mute)}
+.tabs span{padding:8px 11px;border-bottom:2px solid transparent;white-space:nowrap}
+.tabs span.on{color:#0866ff;border-color:#0866ff}
+.tbr{display:flex;gap:6px;font:600 11px/1 var(--am)}
+.tbr .dt{padding:7px 10px;border:1px solid #ccd0d5;border-radius:7px;background:#fff;white-space:nowrap}
+.tbr .mk{padding:7px 12px;border-radius:7px;background:#0866ff;color:#fff;white-space:nowrap}
+.tbl{overflow:hidden}
+.tr{display:grid;grid-template-columns:40px minmax(0,1.7fr) minmax(0,.9fr) minmax(0,1fr) minmax(0,1fr);align-items:center;gap:8px;min-height:46px;padding:0 12px;border-top:1px solid #e4e6eb;font:500 11.5px/1.25 var(--am)}
+.tr.th{min-height:30px;border-top:0;background:#f7f8fa;color:var(--c-mute);font:700 10px/1 var(--am);letter-spacing:.03em;text-transform:uppercase;opacity:var(--b31,0)}
+.tr.r1{--b:var(--b31,0)}
+.tr.r2{--b:var(--b32,0)}
+.tr.r3{--b:var(--b33,0)}
+.tr.r{--k:clamp(0,calc((var(--b) - .4)*1.7),1);opacity:var(--b);translate:0 calc((1 - var(--b))*10px)}
+.tg i{position:relative;display:block;width:30px;height:17px;border-radius:99px;background:color-mix(in srgb,#0866ff calc(var(--k)*100%),#bcc0c4)}
+.tg i:after{content:"";position:absolute;top:2px;left:calc(2px + var(--k)*13px);width:13px;height:13px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgb(0 0 0/.3)}
+.nm{display:flex;align-items:center;gap:9px;min-width:0}
+.nm img{flex:none;width:30px;height:30px;border-radius:6px;object-fit:cover}
+.nm div{min-width:0}
+.nm b{display:block;overflow:hidden;font-weight:700;text-overflow:ellipsis;white-space:nowrap}
+.nm small{display:block;margin-top:2px;font-size:10px;color:var(--c-mute)}
+.dl{position:relative;display:flex;align-items:center;gap:6px;height:16px;font:600 11px/1 var(--am)}
+.dl i{flex:none;width:8px;height:8px;border-radius:50%;background:color-mix(in srgb,#31a24c calc(var(--k)*100%),#bcc0c4)}
+.dl span{position:absolute;left:14px;top:0;white-space:nowrap}
+.dl .off{color:var(--c-mute);opacity:calc(1 - var(--k))}
+.dl .on{color:#1f8a3b;opacity:var(--k)}
+html.go .dl i{animation:ping3 2.2s ease-out infinite}
+@keyframes ping3{0%{box-shadow:0 0 0 0 rgb(49 162 76/.5)}100%{box-shadow:0 0 0 7px rgb(49 162 76/0)}}
+.sp svg{display:block;width:100%;height:20px;fill:none;stroke:#0866ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sp path{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--k))}
+.chc{display:flex;flex:1;flex-direction:column;min-height:0;padding:10px 14px 12px}
+.ch-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font:700 11.5px/1 var(--am)}
+.ch-h span{font-weight:500;color:var(--c-mute)}
+.plot{position:relative;flex:1;min-height:0}
+.plot svg{position:absolute;inset:0;display:block;width:100%;height:100%}
+.pl-c{position:absolute;inset:0;clip-path:inset(-4px calc((1 - clamp(0,calc(var(--l3,0)*1.12),1))*100%) -4px 0)}
+.gl2{stroke:#e4e6eb;stroke-width:1;vector-effect:non-scaling-stroke}
+.cl{fill:none;stroke:#0866ff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.ca{fill:rgb(8 102 255/.12)}
+.cd2{position:absolute;left:0;top:0;width:12px;height:12px;margin:-6px;border:3px solid #0866ff;border-radius:50%;background:#fff;opacity:clamp(0,calc(var(--l3,0)*12),1)}
 
 /* =========================================================
    MARKALAR + 3D GALERİ
@@ -612,11 +698,27 @@ html.go .story.eng .hb{animation:hb 2.8s ease-out var(--hd,0s) infinite}
   .share{display:block;left:-52%;top:58%;width:86%;padding:10px}
   .engc{display:block;left:-44%;top:58%;width:72%;padding:10px}
   .er{padding:5px 0}
-  .canvas{width:100%;aspect-ratio:1.08/1}
-  .radar{width:60%;top:46%}
-  .crumbs li{padding:6px 8px;font-size:10px}
-  .cv-top img{width:64px}
-  .cv-n{width:170px;right:8px;top:8px}
+  .canvas{width:100%;aspect-ratio:.84/1}
+  .cv-top{height:44px;padding:0 10px;gap:8px}
+  .cv-top img{width:60px}
+  .cv-sep,.cv-ttl,.cv-nav{display:none}
+  .crumbs li{padding:6px 8px;font-size:10.5px}
+  .st{left:0;top:44px;bottom:27px}
+  .cv-note{padding:8px 10px;font-size:9px}
+  .am{inset:8px;grid-template-columns:1fr}
+  .form,.ptabs{display:none}
+  .prev{padding:8px}
+  .ia-i{aspect-ratio:16/10}
+  .chips.m{display:flex}
+  .gaugec{padding:10px 12px}
+  .amc{inset:8px;gap:8px}
+  .tabs span{padding:7px 7px;font-size:10.5px}
+  .tbr .dt{display:none}
+  .tr{grid-template-columns:36px minmax(0,1fr) 72px;gap:6px;min-height:42px;padding:0 8px}
+  .tr>span:nth-child(n+4){display:none}
+  .chc{padding:8px 10px 10px}
+  .cv-n{width:176px;right:8px;top:6px}
+  .cv-n.c{top:auto;bottom:10px;right:10px}
   .work-intro{display:block}.work-intro .lead{margin-top:20px}
   .stats{margin-top:36px}
   .stat{padding:18px 10px 4px 0}.stat+.stat{padding-left:12px}
@@ -876,45 +978,74 @@ html.go .story.eng .hb{animation:hb 2.8s ease-out var(--hd,0s) infinite}
         </ol></div>
 
         <div class="canvas" aria-hidden="true">
-          <div class="cv-top"><img src="assets/meta-transparent.svg" alt=""><ul class="crumbs"><li class="c1 on">Kurgu</li><li class="c2">Hedef kitle</li><li class="c3">Takip</li></ul></div>
+          <div class="cv-top"><img src="assets/meta-transparent.svg" alt=""><i class="cv-sep"></i><span class="cv-ttl">Reklam Yöneticisi</span><ul class="crumbs"><li class="c1 on">Kurgu</li><li class="c2">Hedef kitle</li><li class="c3">Takip</li></ul></div>
+          <div class="cv-nav"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 
-          <div class="st a"><div class="ads">
-            <div class="ad x1">
-              <div class="ad-h"><img class="av" src="assets/vita-logo.webp" alt=""><div><b>Vita</b><small>Sponsorlu</small></div></div>
-              <img class="pic" src="assets/vita-baklava.webp" alt="">
-              <div class="ad-f"><span>Tatlıların altın dokunuşu</span><u>Daha fazla bilgi</u></div>
-              <span class="tag g">Görsel</span>
+          <!-- sahne 1: reklam oluşturma + Instagram akışı önizlemesi -->
+          <div class="st a"><div class="am">
+            <div class="mc form">
+              <h6>Reklam oluştur <u>Taslak</u></h6>
+              <div class="fld f1"><label>Reklam adı</label><div class="in"><span class="ty">Vita · Baklava</span></div></div>
+              <div class="fld f1"><label>Kimlik</label><div class="in"><img class="av" src="assets/vita-logo.webp" alt=""><span class="ty">Vita · Instagram hesabı</span></div></div>
+              <div class="fld f2"><label>Reklam görseli</label><div class="in media"><img src="assets/vita-baklava.webp" alt=""><span class="ty">Görsel · 3:2</span></div></div>
+              <div class="fld f2"><label>Birincil metin</label><div class="in"><span class="ty">Tatlıların altın dokunuşu.</span></div></div>
+              <div class="fld f3"><label>Harekete geçirici mesaj</label><div class="in"><span class="ty">Daha fazla bilgi</span><i>▾</i></div></div>
+              <div class="acts"><span>İptal</span><span class="pri">Yayınla</span></div>
             </div>
-            <div class="ad x2">
-              <div class="ad-h"><img class="av" src="assets/aymar-logo.webp" alt=""><div><b>Aymar</b><small>Sponsorlu</small></div></div>
-              <img class="pic" src="assets/aymar-pisi-tarif.webp" alt="">
-              <div class="ad-f"><span>Altın gibi pişiler</span><u>Daha fazla bilgi</u></div>
-              <span class="tag t">Metin</span><span class="tag k">Buton</span>
+            <div class="mc prev">
+              <div class="ptabs"><span class="on">Instagram akışı</span><span>Hikâyeler</span><span>Reels</span></div>
+              <div class="iga">
+                <div class="ia-h"><img class="av" src="assets/vita-logo.webp" alt=""><div><b>Vita</b><small>Sponsorlu</small></div><i>•••</i></div>
+                <img class="ia-i" src="assets/vita-baklava.webp" alt="">
+                <div class="ia-cta"><span>Daha fazla bilgi</span><i>›</i></div>
+                <div class="ia-a"><svg><use href="#i-heart"/></svg><svg><use href="#i-comment"/></svg><svg><use href="#i-send"/></svg></div>
+                <p class="ia-t"><b>Vita</b> Tatlıların altın dokunuşu.</p>
+              </div>
             </div>
           </div>
           <div class="notif cv-n a"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Reklam taslağı hazır</span></div></div></div>
 
-          <div class="st b">
-            <div class="radar"><i class="rg g1"></i><i class="rg g2"></i><i class="rg g3"></i><i class="rg t"></i><div class="dots"></div></div>
-            <span class="rad-l">Örnek ölçütler</span>
-            <div class="crit"><span><i></i>Konum</span><span><i></i>Yaş aralığı</span><span><i></i>İlgi alanları</span></div>
-            <div class="notif cv-n b"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Hedef kitle kaydedildi</span></div></div>
-          </div>
-
-          <div class="st c">
-            <div class="chart">
-              <svg viewBox="0 0 400 190" preserveAspectRatio="none">
-                <line class="gl" x1="0" y1="20" x2="400" y2="20"/><line class="gl" x1="0" y1="75" x2="400" y2="75"/><line class="gl" x1="0" y1="130" x2="400" y2="130"/><line class="gl" x1="0" y1="185" x2="400" y2="185"/>
-                <path class="ca" d="M8 165 C 58 158, 90 132, 132 134 S 205 96, 248 90 S 328 52, 392 30 L392 185 L8 185 Z"/>
-                <path class="cl" pathLength="1" d="M8 165 C 58 158, 90 132, 132 134 S 205 96, 248 90 S 328 52, 392 30"/>
-                <circle class="cd" r="6" cx="8" cy="165"/>
-              </svg>
+          <!-- sahne 2: kitle ve kitle tanımı göstergesi -->
+          <div class="st b"><div class="am">
+            <div class="mc form">
+              <h6>Kitle <u>Reklam seti</u></h6>
+              <div class="fld g1"><label>Konum</label><div class="in"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.4" fill="currentColor"/></svg><span>Türkiye</span><i>×</i></div></div>
+              <div class="fld g1"><label>Yaş aralığı</label><div class="sl"><span class="sl-t"><i class="sl-f"></i><i class="sl-h l"></i><i class="sl-h r"></i></span><span class="sl-v"><span class="a">18 – 65+</span><span class="b">25 – 54</span></span></div></div>
+              <div class="fld g2"><label>Cinsiyet</label><div class="seg"><span class="on">Tümü</span><span>Kadın</span><span>Erkek</span></div></div>
+              <div class="fld g3"><label>Detaylı hedefleme</label><div class="chips"><span>Yemek tarifleri</span><span>Pastacılık</span><span>Ev yemekleri</span></div></div>
             </div>
-            <div class="kp"><div style="--fill:78%">Bütçe<i></i></div><div style="--fill:64%">Yayın<i></i></div><div style="--fill:88%">Sonuç takibi<i></i></div></div>
-            <div class="notif cv-n c"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Reklam yayında</span></div></div>
+            <div class="mc gaugec">
+              <h6>Kitle tanımı</h6>
+              <svg class="gauge" viewBox="0 0 200 112"><path class="g0" pathLength="100" d="M20 100A80 80 0 0 1 180 100"/><path class="g1s" pathLength="100" d="M20 100A80 80 0 0 1 180 100"/><path class="g2s" pathLength="100" d="M20 100A80 80 0 0 1 180 100"/><path class="g3s" pathLength="100" d="M20 100A80 80 0 0 1 180 100"/><g class="nd"><line x1="100" y1="100" x2="100" y2="40" stroke="#1c1e21" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="8" fill="#1c1e21"/></g></svg>
+              <div class="gl"><span>Spesifik</span><span>Geniş</span></div>
+              <p class="gt"><span class="a">Kitle seçiminiz oldukça geniş.</span><span class="b">Kitle seçiminiz dengeli.</span></p>
+              <div class="chips m"><span>Yemek tarifleri</span><span>Pastacılık</span><span>Ev yemekleri</span></div>
+              <div class="est"><label>Tahmini kitle büyüklüğü</label><span class="eb"><i></i></span></div>
+            </div>
           </div>
+          <div class="notif cv-n b"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Hedef kitle kaydedildi</span></div></div></div>
 
-          <p class="cv-note">Temsili gösterim · gerçek kampanya verisi değildir.</p>
+          <!-- sahne 3: kampanya tablosu ve sonuç grafiği -->
+          <div class="st c"><div class="amc">
+            <div class="tb"><div class="tabs"><span>Kampanyalar</span><span>Reklam setleri</span><span class="on">Reklamlar</span></div><div class="tbr"><span class="dt">Son 7 gün ▾</span><span class="mk">+ Oluştur</span></div></div>
+            <div class="mc tbl">
+              <div class="tr th"><span></span><span>Reklam</span><span>Yayın</span><span>Sonuçlar</span><span>Erişim</span></div>
+              <div class="tr r r1"><span class="tg"><i></i></span><span class="nm"><img src="assets/vita-baklava.webp" alt=""><div><b>Vita · Baklava</b><small>Türkiye · 25–54</small></div></span><span class="dl"><i></i><span class="off">Kapalı</span><span class="on">Yayında</span></span><span class="sp"><svg viewBox="0 0 60 20"><path pathLength="1" d="M1 17L11 13L21 15L31 9L41 10L51 5L59 3"/></svg></span><span class="sp"><svg viewBox="0 0 60 20"><path pathLength="1" d="M1 15L11 14L21 11L31 12L41 7L51 6L59 2"/></svg></span></div>
+              <div class="tr r r2"><span class="tg"><i></i></span><span class="nm"><img src="assets/aymar-pisi-tarif.webp" alt=""><div><b>Aymar · Pişi tarifi</b><small>Türkiye · 25–54</small></div></span><span class="dl"><i></i><span class="off">Kapalı</span><span class="on">Yayında</span></span><span class="sp"><svg viewBox="0 0 60 20"><path pathLength="1" d="M1 16L11 15L21 12L31 13L41 8L51 7L59 4"/></svg></span><span class="sp"><svg viewBox="0 0 60 20"><path pathLength="1" d="M1 17L11 12L21 13L31 8L41 9L51 4L59 3"/></svg></span></div>
+              <div class="tr r r3"><span class="tg"><i></i></span><span class="nm"><img src="assets/katkat-poster.webp" alt=""><div><b>Vita · Kat kat lezzet</b><small>Türkiye · 25–54</small></div></span><span class="dl"><i></i><span class="off">Kapalı</span><span class="on">Yayında</span></span><span class="sp"><svg viewBox="0 0 60 20"><path pathLength="1" d="M1 16L11 14L21 15L31 10L41 11L51 6L59 4"/></svg></span><span class="sp"><svg viewBox="0 0 60 20"><path pathLength="1" d="M1 14L11 15L21 10L31 11L41 6L51 7L59 3"/></svg></span></div>
+            </div>
+            <div class="mc chc">
+              <div class="ch-h"><b>Sonuçlar</b><span>Son 7 gün</span></div>
+              <div class="plot">
+                <svg viewBox="0 0 640 100" preserveAspectRatio="none"><line class="gl2" x1="0" y1="8" x2="640" y2="8"/><line class="gl2" x1="0" y1="36" x2="640" y2="36"/><line class="gl2" x1="0" y1="64" x2="640" y2="64"/><line class="gl2" x1="0" y1="92" x2="640" y2="92"/></svg>
+                <div class="pl-c"><svg viewBox="0 0 640 100" preserveAspectRatio="none"><path class="ca" d="M0 84C100 80 160 62 230 64S340 42 410 38S540 18 640 10L640 100L0 100Z"/><path class="cl" d="M0 84C100 80 160 62 230 64S340 42 410 38S540 18 640 10"/></svg></div>
+                <i class="cd2"></i>
+              </div>
+            </div>
+          </div>
+          <div class="notif cv-n c"><span class="n-ic mt">∞</span><div class="n-tx"><div class="n-h"><b>Meta</b><i>şimdi</i></div><span>Reklam yayında</span></div></div></div>
+
+          <p class="cv-note">Temsili Reklam Yöneticisi görünümü · gerçek kampanya verisi değildir.</p>
         </div>
       </div>
       <span class="hint" aria-hidden="true">Kaydırarak ilerle ↓</span>
@@ -1209,8 +1340,14 @@ function setStory(s,p){
     s.pct.forEach(el=>{if(el.textContent!==pc)el.textContent=pc});
   }
   if(s.type==='ads'){
-    const path=$('.cl',s.el),dot=$('.cd',s.el);
-    if(path&&dot){const len=path.getTotalLength(),pt=path.getPointAtLength(len*clamp(l[2]*1.12));dot.setAttribute('cx',pt.x);dot.setAttribute('cy',pt.y)}
+    const path=$('.cl',s.el),dot=$('.cd2',s.el);
+    if(path&&dot){
+      /* noktayı çizginin x konumuna göre bul (grafik soldan sağa açılıyor) */
+      const X=clamp(l[2]*1.12)*640;let lo=0,hi=path.getTotalLength();
+      for(let i=0;i<14;i++){const m=(lo+hi)/2;path.getPointAtLength(m).x<X?lo=m:hi=m}
+      const pt=path.getPointAtLength(hi);
+      dot.style.left=(X/640*100).toFixed(2)+'%';dot.style.top=pt.y.toFixed(1)+'%';
+    }
   }
 }
 
