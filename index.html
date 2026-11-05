@@ -666,7 +666,7 @@ html.go .dl i{animation:ping3 2.2s ease-out infinite}
 .contact .mq{margin-block:0 clamp(40px,8vh,90px);border:0}
 .contact .h2{font-size:clamp(54px,8vw,128px)}
 .who{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.who strong{margin-right:12px;font-size:20px;font-weight:500;letter-spacing:-.03em}
+.who strong{flex-basis:100%;margin-bottom:6px;font-size:clamp(22px,2.4vw,30px);font-weight:500;letter-spacing:-.03em}
 .note-pill{margin-top:34px;padding:16px 22px;display:inline-block;border:1px dashed color-mix(in srgb,#fff 60%,transparent);border-radius:14px;font-size:14px;line-height:1.6;color:var(--mute)}
 .totop{margin-top:60px;border:0;background:none;padding:0;cursor:pointer;font:600 11px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 
@@ -1233,7 +1233,7 @@ html.calm .depth{--rr:0deg}
 try{(()=>{
 /* ====== İLETİŞİM BİLGİLERİ — doldurunca butonlar otomatik görünür ======
    instagram: sadece kullanıcı adı yaz (ör. "kullaniciadi") */
-const CONTACT={name:'',email:'',phone:'',instagram:''};
+const CONTACT={name:'Ebubekir Sıddık Pekmez',email:'',phone:'0 533 199 09 27',instagram:''};
 
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const root=document.documentElement;
@@ -1684,10 +1684,14 @@ function frame(now){
 
 /* ---------- iletişim bilgileri ---------- */
 (()=>{
-  const box=$('#who'),c=CONTACT,add=(txt,href,ghost)=>{const a=document.createElement('a');a.className='btn magnetic'+(ghost?' ghost':'');a.href=href;a.textContent=txt;box.appendChild(a)};
+  const box=$('#who'),c=CONTACT,add=(txt,href,ghost)=>{const a=document.createElement('a');a.className='btn magnetic'+(ghost?' ghost':'');a.href=href;if(/^https?:/.test(href)){a.target='_blank';a.rel='noopener'}a.textContent=txt;box.appendChild(a)};
   if(c.name){const s=document.createElement('strong');s.textContent=c.name;box.appendChild(s)}
   if(c.email)add(c.email,'mailto:'+c.email);
-  if(c.phone)add(c.phone,'tel:'+c.phone.replace(/[^+\d]/g,''),true);
+  if(c.phone){
+    const d=c.phone.replace(/\D/g,''),intl=d.startsWith('00')?d.slice(2):d.startsWith('0')?'90'+d.slice(1):d;
+    add('WhatsApp’tan yaz →','https://wa.me/'+intl+'?text='+encodeURIComponent('Merhaba, portfolyo sunumunuzu inceledim.'));
+    add(c.phone,'tel:+'+intl,true);
+  }
   if(c.instagram)add('@'+c.instagram.replace(/^@/,''),'https://instagram.com/'+encodeURIComponent(c.instagram.replace(/^@/,'')),true);
   if(!box.children.length){const p=document.createElement('p');p.className='note-pill';p.textContent='İsim, iletişim bilgileri ve sosyal medya bağlantıları bu alana eklenecek.';box.appendChild(p)}
 })();
